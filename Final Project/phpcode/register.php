@@ -8,7 +8,7 @@
         <script src="js/validformregis.js"></script>
     </head>
     <body>
-            <form name="myform" method="post" onsubmit="return validateForm()">
+            <form name="myRegisterForm" method="post" onsubmit="return validateRegisterForm()">
                 <div class="register-form">
                     <div class="input-box">
                         Full Name: <input type="text" name="fullname" placeholder="Enter Full Name">
