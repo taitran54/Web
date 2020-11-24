@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/register.css">
-        <script src="js/validformregis.js"></script>
+        <script src="main.js/validformregis.js"></script>
     </head>
     <body>
             <form name="myRegisterForm" method="post" onsubmit="return validateRegisterForm()">
