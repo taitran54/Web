@@ -116,6 +116,4 @@ insert into `Account` (`username`, `password`, `role`, `id_profile`)
 	values ('teacher', 'root', 'teacher', 2);
 
 insert into `Account` (`username`, `password`, `role`, `id_profile`) 
-	values ('student', 'root', 'student', 3)    
-    
-    
+	values ('student', 'root', 'student', 3);
