@@ -1,9 +1,9 @@
 /*jS an Jquery code store here*/
 
 /* validform login */
-function validateForm() {
-	var user = document.myform.username.value;
-    var pass = document.myform.password.value;
+function validateLoginForm() {
+	var user = document.myLoginForm.username.value;
+    var pass = document.myLoginForm.password.value;
     if ( user == "" || pass == "") {
         alert("Please Fill All Information");
         return false;
@@ -14,16 +14,16 @@ function validateForm() {
     }
 }
 /* validform register */
-function validateForm() {
-	var user = document.myform.username.value;
-        var pass = document.myform.password.value;
-        var addre = document.myform.address.value;
-        var pass2 = document.myform.password2.value;
-        var fname = document.myform.fullname.value;
-        var phonee = document.myform.phone.value;
-        var images = document.myform.image.value;
-        var date = document.myform.dateofbirth.value;
-        var rol = document.myform.role.value;
+function validateRegisterForm() {
+	var user = document.myRegisterForm.username.value;
+        var pass = document.myRegisterForm.password.value;
+        var addre = document.myRegisterForm.address.value;
+        var pass2 = document.myRegisterForm.password2.value;
+        var fname = document.myRegisterForm.fullname.value;
+        var phonee = document.myRegisterForm.phone.value;
+        var images = document.myRegisterForm.image.value;
+        var date = document.myRegisterForm.dateofbirth.value;
+        var rol = document.myRegisterForm.role.value;
                 
 		if ( phonee == "" || images == "" || date == "" || rol == "" || user == "" || fname =="" || addre == "") {
                     alert("Please Fill All Information");
@@ -46,9 +46,9 @@ function validateForm() {
                 }
             }   
 /* validform lostpassword */
-function validateForm() {
-	var user = document.myform.username.value;
-	var phonee = document.myform.phone.value;
+function validateLostPassForm() {
+	var user = document.myLostPassForm.username.value;
+	var phonee = document.myLostPassForm.phone.value;
 	if ( phonee == ""|| user == ""  ) {
         alert("Please Fill All Information");
         return false;
