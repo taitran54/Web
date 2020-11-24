@@ -6,7 +6,7 @@
 </head>
 <body>
     <main>
-        <form name="myform" method="post" onsubmit="return validateForm()" >
+        <form name="myLostPassForm" method="post" onsubmit="return validateLostPassForm()" >
             <div class="forgotpassword" >
             <img src="image/avatar.png" class="avatar">
                 <h1>Forgot Password</h1>
