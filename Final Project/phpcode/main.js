@@ -1,3 +1,5 @@
+/*jS an Jquery code store here*/
+
 /* validform login */
 function validateForm() {
 	var user = document.myform.username.value;
