@@ -9,7 +9,7 @@
         <div class="loginbox">
         <img src="image/avatar.png" class="avatar">
             <h1>Login Here</h1>
-            <form name="myform" method="post" onsubmit="return validateForm()">
+            <form name="myLoginForm" method="post" onsubmit="return validateLoginForm()">
                 <p>Username</p>
                 <input type="text" name="username" placeholder="Enter Username">
                 
