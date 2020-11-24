@@ -2,7 +2,7 @@
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="css/login.css">
-    <script src="js/validformlogin.js"></script>
+    <script src="main.js/validformlogin.js"></script>
 </head>
 <body>
     <main>
