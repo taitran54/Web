@@ -1,8 +1,8 @@
 <html>
 <head>
     <title>Forgot Password</title>
-    <link rel="stylesheet" href="css/lostpassword.css">
-    <script src="main.js/validformlostpass.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
 </head>
 <body>
     <main>
