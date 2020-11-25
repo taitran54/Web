@@ -1,29 +1,72 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Register for a new account</title>
+        <title>
+        <?php
+            if (isset ($_GET["id"])){
+                echo ("Edit Profile");
+            } else {
+                echo ("Registation");
+            }
+        ?>
+        </title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/register.css">
+        <link rel="stylesheet" href="style.css">
         <script src="main.js/validformregis.js"></script>
     </head>
     <body>
+
+    <?php 
+    $id = "";
+    $username = "";
+    $password = "";
+    $role = "";
+    $name = "";
+    $address = "";
+    $email = "";
+    $brith = "";
+    $title = "Registor";
+    $buttonTitle = "Sign up";
+
+    if (isset($_GET["id"])){
+        require "connection.php";
+        $id = $_GET["id"];
+        $sql = "SELECT A.username, A.password, A.role, P.name, P.email, P.address, P.birth, P.phone 
+            FROM Account A, Profile P WHERE A.id_profile = P.id AND A.id=".$id;
+        $result =$conn->query ($sql);
+        $row = $result ->fetch_assoc();  
+        
+        if ($row){
+            $username = $row["username"];
+            $password = $row["password"];
+            $role = $row["role"];
+            $name = $row["name"];
+            $address = $row["address"];
+            $email = $row["email"];
+            $brith = $row["birth"];
+        }
+
+        $title = "Edit Account";
+        $buttonTitle = "Update";
+    }
+    ?>
             <form name="myRegisterForm" method="post" onsubmit="return validateRegisterForm()">
                 <div class="register-form">
                     <div class="input-box">
-                        Full Name: <input type="text" name="fullname" placeholder="Enter Full Name">
+                        Full Name: <input type="text" name="fullname" placeholder="Enter Full Name" value= "<?php echo ($name)?>" required>
                     </div>
 
                     <div class="input-box">    
-                        Username: <input type="text" name="username" placeholder="Enter UserName"><br>
+                        Username: <input type="text" name="username" placeholder="Enter UserName" value ="<?php echo ($username)?>" required><br>
                     </div>
 
                     <div class="input-box">    
-                        Password: <input type="password" name="password" placeholder="Enter Password" ><br> 
+                        Password: <input type="password" name="password" placeholder="Enter Password" value = "<?php echo ($password)?>" required><br> 
                     </div>
 
                     <div class="input-box">
-                        Re-type Password: <input type="password" name="password2"  placeholder="Re-type Password">
+                        Re-type Password: <input type="password" name="password2"  placeholder="Re-type Password" value = "<?php?>">
                     </div>
 
                     <div class="input-box">
@@ -58,7 +101,7 @@
                         <div class="clear"></div>
                     </div>                       
                     <div class="btn-box">
-                    <button type="submit">Register</button>
+                    <button type="submit"><?php echo ($buttonTitle)?></button>
                 </div>
             </form>
     </body>

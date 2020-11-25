@@ -1,13 +1,13 @@
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="css/login.css">
-    <script src="main.js/validformlogin.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
 </head>
 <body>
     <main>
         <div class="loginbox">
-        <img src="image/avatar.png" class="avatar">
+        <img src="uploads/avatar/avatar.png" class="avatar">
             <h1>Login Here</h1>
             <form name="myLoginForm" method="post" onsubmit="return validateLoginForm()">
                 <p>Username</p>
