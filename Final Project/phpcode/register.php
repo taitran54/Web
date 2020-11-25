@@ -26,6 +26,7 @@
     $address = "";
     $email = "";
     $brith = "";
+    $phone = "";
     $title = "Registor";
     $buttonTitle = "Sign up";
 
@@ -45,16 +46,21 @@
             $address = $row["address"];
             $email = $row["email"];
             $brith = $row["birth"];
+            $phone = $row["phone"];
         }
 
         $title = "Edit Account";
         $buttonTitle = "Update";
     }
     ?>
-            <form name="myRegisterForm" method="post" onsubmit="return validateRegisterForm()">
+            <form name="myRegisterForm" action = "processaccount.php" method="post" enctype="multipart/form-data" onsubmit="return validateRegisterForm()">
                 <div class="register-form">
                     <div class="input-box">
                         Full Name: <input type="text" name="fullname" placeholder="Enter Full Name" value= "<?php echo ($name)?>" required>
+                    </div>
+
+                    <div class="input-box">
+                        Email <input type="text" name="email" placeholder="Enter Email" value= "<?php echo ($email)?>" required>
                     </div>
 
                     <div class="input-box">    
@@ -66,35 +72,37 @@
                     </div>
 
                     <div class="input-box">
-                        Re-type Password: <input type="password" name="password2"  placeholder="Re-type Password" value = "<?php?>">
+                        Re-type Password: <input type="password" name="password2"  placeholder="Re-type Password" value = "" required>
                     </div>
 
                     <div class="input-box">
-                        Address: <input type="text" name="address" placeholder="Enter Address">
+                        Address: <input type="text" name="address" placeholder="Enter Address" value = "<?php echo ($address)?>" required>
                     </div>
 
                     <div class="input-box">
                         Enter a phone number: <input type="tel" id="phone" name="phone"
                           placeholder="0123456789"
-                          pattern="[0]{1}[0-9]{9}">
+                          pattern="[0]{1}[0-9]{9}" 
+                          value = "<?php echo ($phone)?>" required>
                     </div>
 
-                    <div class="input-box">
-                        Image: <input type="file" name="image" placeholder="Image">
+                    <label for="fileToUpload">Image</label>
+                    <div class="input-group">
+                        <input type="file" id="fileToUpload" name="fileToUpload" required>
                     </div>
 
                     <div class="input-box">
                         <div class="col-6"  onsubmit="return checkForm()"  >
                             <label for="dateofbirth">Date Of Birth </label>
-                            <input type="date" name="dateofbirth" max="2020-12-01" min="1900-01-01">
+                            <input type="date" name="dateofbirth" max="2020-12-01" min="1900-01-01" value = "<?php echo ($brith)?>">
                         </div>
 
                         <div class="col-6">
                             <label for="role">Role: </label>
                             <br>
                             <select id="role" name="role">
-                                <option value="student" selected="selected" >Student</option>
-                                <option value="teacher" >Teacher</option>
+                                <option value="student" <?php echo $role =="teacher"? "":"selected" ?>>Student</option>
+                                <option value="teacher"<?php echo $role =="teacher"? "selected":"" ?> >Teacher</option>
                             </select>
                         </div>
 
@@ -103,6 +111,21 @@
                     <div class="btn-box">
                     <button type="submit"><?php echo ($buttonTitle)?></button>
                 </div>
+                <?php
+                    if (isset($_GET["error"])){
+                    echo '<script language="javascript">';
+                    if ($_GET["error"]=="user"){
+                        echo 'alert("Your user is invalid.")';
+                    }
+                    if ($_GET["error"]=="email"){
+                        echo 'alert("Your email is invalid.")';
+                    }
+                    if ($_GET["error"]=="image"){
+                        echo 'alert("Your avatar is not a image.")';
+                    }
+                    echo '</script>';
+                    }
+                ?>
             </form>
     </body>
 </html>
