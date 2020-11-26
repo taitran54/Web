@@ -54,6 +54,7 @@
     }
     ?>
             <form name="myRegisterForm" action = "processaccount.php" method="post" enctype="multipart/form-data" onsubmit="return validateRegisterForm()">
+                <input type="hidden" name="id" value="<?php echo $id ?>">
                 <div class="register-form">
                     <div class="input-box">
                         Full Name: <input type="text" name="fullname" placeholder="Enter Full Name" value= "<?php echo ($name)?>" required>
@@ -121,7 +122,7 @@
                         echo 'alert("Your email is invalid.")';
                     }
                     if ($_GET["error"]=="image"){
-                        echo 'alert("Your avatar is not a image.")';
+                        echo 'alert("There was an error when upload your image")';
                     }
                     echo '</script>';
                     }

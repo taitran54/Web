@@ -117,3 +117,4 @@ insert into `Account` (`username`, `password`, `role`, `id_profile`)
 
 insert into `Account` (`username`, `password`, `role`, `id_profile`) 
 	values ('student', 'root', 'student', 3);
+    
