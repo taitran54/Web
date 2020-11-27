@@ -30,6 +30,7 @@ create table if not exists `Class` (
     `name` nvarchar (255) not null,
     `code` varchar (8) not null,
     `image` varchar (255) not null,
+    `date` datetime,
     `id_teacher` int (11),
     primary key (`id`),
     foreign key (`id_teacher`) references `Account`(`id`)

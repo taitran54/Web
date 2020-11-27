@@ -106,7 +106,7 @@
             if ($row['id'] != $_POST["id"]){
                 $conn->close();
                 $id = $_POST["id"];
-                header ("Location: register.php?error=user&id=$id");
+                header ("Location: register.php?error=user");
                 exit;
             }
         }
@@ -121,7 +121,7 @@
             if ($row['id'] != $_POST["id"]){
                 $conn->close();
                 $id = $_POST["id"];
-                header ("Location: register.php?error=email&id=$id");
+                header ("Location: register.php?error=email");
                 exit;
             }
         }

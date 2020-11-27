@@ -1,3 +1,4 @@
 <?php 
-    unlink('uploads/avatar/changed.png');
+    require ("function.php");
+    echo (getCurrentDateTime());
 ?>

@@ -30,16 +30,16 @@
     $title = "Registor";
     $buttonTitle = "Sign up";
 
-    if (isset($_GET["id"])){
+    if (isset($_SESSION["username"])){
         require "connection.php";
-        $id = $_GET["id"];
-        $sql = "SELECT A.username, A.password, A.role, P.name, P.email, P.address, P.birth, P.phone 
-            FROM Account A, Profile P WHERE A.id_profile = P.id AND A.id=".$id;
+        $username = $_SESSION["username"];
+        $sql = "SELECT A.id, A.password, A.role, P.name, P.email, P.address, P.birth, P.phone 
+            FROM Account A, Profile P WHERE A.id_profile = P.id AND A.username=".$username;
         $result =$conn->query ($sql);
         $row = $result ->fetch_assoc();  
         
         if ($row){
-            $username = $row["username"];
+            $id = $row['id'];
             $password = $row["password"];
             $role = $row["role"];
             $name = $row["name"];

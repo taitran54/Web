@@ -1,10 +1,9 @@
 <?php
-$creatorid = $_POST["creatorid"];
-$name = $_POST["name"];
-$subject = $_POST["subject"];
-$room = $_POST["room"];
+require("function.php");
+$creatorid = getId($_POST["teacherusername"]);
+$name = $_POST["classname"];
 $code = $_POST["code"];
-$date = $_POST["date"];
+$date = getCurrentDateTime();
 
 $target_dir = "uploads/";
 $target_file = $target_dir . $_FILES["fileToUpload"]["name"];
@@ -14,20 +13,22 @@ if (!move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 }
 
 require "connection.php";
+if ($creatorid!=null){
+	if (empty($_POST["id"])) {
+		$sql = "INSERT INTO class (name, date, code, image, id_teacher) 
+		VALUES (?, ?, ?, ?, ?)";
+		echo $sql;
+		$stmt = $conn->prepare($sql);
+		$stmt->bind_param("ssssi", $name, $date, $code, $target_file, $creatorid);
+	} else {
+		$sql = "UPDATE class SET name=?, image=? , id_teacher=? WHERE id=" . $_POST["id"];
+		$stmt = $conn->prepare($sql);
+		$stmt->bind_param("ssi", $name, $target_file, $creatorid);
+	}
 
-if (empty($_POST["id"])) {
-	$sql = "INSERT INTO class(name, subject, room, date, code, image, id_teacher) 
-	VALUES (?, ?, ?, ?, ?, ?, ?)";
-	$stmt = $conn->prepare($sql);
-	$stmt->bind_param("ssssssi", $name, $subject, $room, $date, $code, $target_file, $creatorid);
-} else {
-	$sql = "UPDATE class SET name=?, subject=?, room=?, image=? WHERE id=" . $_POST["id"];
-	$stmt = $conn->prepare($sql);
-	$stmt->bind_param("ssss", $name, $subject, $room, $target_file);
-}
-
-if ($stmt->execute() === FALSE) {
-	die("Error: " . $sql . "<br>" . $conn->error);
+	if ($stmt->execute() === FALSE) {
+		die("Error: " . $sql . "<br>" . $conn->error);
+	}
 }
 
 $conn->close();

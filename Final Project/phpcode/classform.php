@@ -20,35 +20,31 @@
   <body class="bg-light">
 	<?php
 	$id = "";
-	$creatorid= "";
+	$creatorusername= "";
 	$name = "";
-	$subject = "";
-	$room = "";
 	$date = "";
 	$code = "";
 	$title = "Add Class";
 	$buttonTitle = "Add";
+
 	
-	if (isset($_GET["id"])) {
+	if (isset($_POST["id"])) {
 		require "connection.php";
-		$id = $_GET["id"];
-		$sql = "SELECT * FROM class WHERE id=" . $id;
+		$id = $_POST["id"];
+		$sql = "SELECT A.username, C.name, C.date, C.code  FROM class C, account A WHERE A.id =C.id_teacher AND C.id=" . $id;
 		$result = $conn->query($sql);
 		$row = $result->fetch_assoc();
 		if ($row) {
 			$name = $row["name"];
-			$subject = $row["subject"];
+			$creatorusername = $row["username"];
 			$room = $row["room"];
 			$code = $row["code"];
 		}
 		$title = "Update Class";
 		$buttonTitle = "Update";
-	} else {
-		session_start();
-		require "connection.php";
-		$creatorid = $_SESSION["account"];
 	}
-	?>
+	require 'function.php';
+?>
 
     <div class="container">
 		<div class="py-5 text-center">
@@ -59,29 +55,28 @@
 			<div class="col-md order-md-1">
 			<form action="addupdateclassadmin.php" method="POST" enctype="multipart/form-data">
 				<input type="hidden" name="id" value="<?php echo $id ?>">
-				<input type="hidden" name="creatorid" value="<?php echo $creatorid ?>">
 				<input type="text" id="date" name="date" value="<?php echo $date ?>" required hidden>
 				<input type="text" class="form-control" id="code" name="code" value="<?php echo $code ?>" required hidden>
-				<div class="mb-3">
-					<label for="name">Class name</label>
+				<div class="mb-3" style="visibility:<?php echo checkAdmin($_SESSION["username"])? "":"hidden"?>">
+					<label for="name">Lecture username</label>
 					<div class="input-group">
-						<input type="text" class="form-control" id="name" name="name" value="<?php echo $name ?>" required>
+						<input type="text" class="form-control" id="teacherusername" name="teacherusername" value="<?php echo $creatorusername ?>" required>
 					</div>
 				</div>
 			
 				<div class="mb-3">
 					<label for="subject">Subject</label>
 					<div class="input-group">
-						<input type="text" class="form-control" id="subject" name="subject" value="<?php echo $subject ?>" required>
+						<input type="text" class="form-control" id="classname" name="classname" value="<?php echo $name ?>" required>
 					</div>
 				</div>
 			
-				<div class="mb-3">
+				<!-- <div class="mb-3">
 					<label for="room">Room</label>
 					<div class="input-group">
-						<input type="text" class="form-control" id="room" name="room" value="<?php echo $room ?>" required>
+						<input type="text" class="form-control" id="room" name="room" value="" required>
 					</div>
-				</div>
+				</div> -->
 										
 				<div class="mb-3">
 					<label for="fileToUpload">Avatar</label>
