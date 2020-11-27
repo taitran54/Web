@@ -110,11 +110,11 @@ insert into `Profile` (`name`, `address`, `phone`, `birth`, `email`,`image`)
 	values (N'Sinh Viên', N'Local', '0000000003', '2020-01-03','student@local.com' , 'uploads/avatar/defalut.png')    ;
 
 insert into `Account` (`username`, `password`, `role`, `id_profile`) 
-	values ('admin', 'root', 'admin', 1);
+	values ('admin', 'roottest', 'admin', 1);
     
 insert into `Account` (`username`, `password`, `role`, `id_profile`) 
-	values ('teacher', 'root', 'teacher', 2);
+	values ('teacher', 'roottest', 'teacher', 2);
 
 insert into `Account` (`username`, `password`, `role`, `id_profile`) 
-	values ('student', 'root', 'student', 3);
+	values ('student', 'roottest', 'student', 3);
     
