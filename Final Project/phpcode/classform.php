@@ -13,6 +13,9 @@
 	<link rel="shorcut icon" href="uploads/earth.jpg" type="image/jpg">	
 	
   </head>
+  <?php
+	include 'sidebar.php';
+  ?>
 
   <body class="bg-light">
 	<?php
@@ -40,8 +43,11 @@
 		}
 		$title = "Update Class";
 		$buttonTitle = "Update";
+	} else {
+		session_start();
+		require "connection.php";
+		$creatorid = $_SESSION["account"];
 	}
-	
 	?>
 
     <div class="container">
@@ -51,7 +57,7 @@
 
 		<div class="row">
 			<div class="col-md order-md-1">
-			<form action="processclassform.php" method="POST" enctype="multipart/form-data">
+			<form action="addupdateclassadmin.php" method="POST" enctype="multipart/form-data">
 				<input type="hidden" name="id" value="<?php echo $id ?>">
 				<input type="hidden" name="creatorid" value="<?php echo $creatorid ?>">
 				<input type="text" id="date" name="date" value="<?php echo $date ?>" required hidden>

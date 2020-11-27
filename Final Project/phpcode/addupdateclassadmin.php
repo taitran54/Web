@@ -16,12 +16,12 @@ if (!move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 require "connection.php";
 
 if (empty($_POST["id"])) {
-	$sql = "INSERT INTO class(creatorid, name, subject, room, avatar, date, code) 
+	$sql = "INSERT INTO class(name, subject, room, date, code, image, id_teacher) 
 	VALUES (?, ?, ?, ?, ?, ?, ?)";
 	$stmt = $conn->prepare($sql);
-	$stmt->bind_param("sssssss", $creatorid, $name, $subject, $room, $target_file, $date, $code);
+	$stmt->bind_param("ssssssi", $name, $subject, $room, $date, $code, $target_file, $creatorid);
 } else {
-	$sql = "UPDATE class SET name=?, subject=?, room=?, avatar=? WHERE id=" . $_POST["id"];
+	$sql = "UPDATE class SET name=?, subject=?, room=?, image=? WHERE id=" . $_POST["id"];
 	$stmt = $conn->prepare($sql);
 	$stmt->bind_param("ssss", $name, $subject, $room, $target_file);
 }
@@ -32,6 +32,6 @@ if ($stmt->execute() === FALSE) {
 
 $conn->close();
 
-header("Location: class.php");
+header("Location: classadmin.php");
 
 ?>

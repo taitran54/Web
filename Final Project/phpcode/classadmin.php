@@ -1,7 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION["user"])) {
-	header("Location: loginadmin.php");
+if (!isset($_SESSION["account"])) {
+	header("Location: login.php");
 }
 ?>
 <!DOCTYPE html>
@@ -9,19 +9,21 @@ if (!isset($_SESSION["user"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="shorcut icon" href="uploads/earth.jpg" type="image/jpg">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
 
 <style>
-    body{
-        padding-top: 50px;
-    }
     table{
-
+		padding-top: 50px;
         text-align: center;
     }
     td{
@@ -52,17 +54,13 @@ if (!isset($_SESSION["user"])) {
         font-weight: bold;
     }
 </style>
-
+	
+<?php
+	include 'sidebar.php';
+?>
+	
 <table cellpadding="10" cellspacing="10" border="0" style="border-collapse: collapse; margin: auto" width=100%>
-
-    <tr class="control" style="font-weight: bold; font-size: 20px;">
-        <td colspan="7" style="text-align:left;">
-            <a href="classform.php" style="padding-left:28px;">Create class</a>
-        </td>
-		<td colspan="1" style="text-align:center;">
-            <a href="logoutadmin.php" style="padding-right:5px;">Logout</a>
-        </td>
-    </tr>
+	
     <tr class="header" style="font-size:20px;">
 		<td>Creator ID</td>
         <td>Class name</td>
@@ -82,14 +80,14 @@ if (!isset($_SESSION["user"])) {
 	while($row = $result->fetch_assoc()) {
 	?>
     <tr class="item">
-		<td><?php echo $row["creatorid"] ?></td>
+		<td><?php echo $row["id_teacher"] ?></td>
 		<td><?php echo $row["name"] ?></td>
 		<td><?php echo $row["subject"] ?></td>
 		<td><?php echo $row["room"] ?></td>
-		<td><img src="<?php echo $row["avatar"] ?>" style="max-height: 80px"></td>
+		<td><img src="<?php echo $row["image"] ?>" style="max-height: 80px"></td>
 		<td><?php echo $row["date"] ?></td>
 		<td><?php echo $row["code"] ?></td>
-        <td><a href="classform.php?id=<?php echo $row["id"] ?>">Update</a> | <a href="delete.php?id=<?php echo $row["id"] ?>" class="delete">Delete</a></td>
+        <td><a href="classform.php?id=<?php echo $row["id"] ?>">Update</a> | <a href="deleteadmin.php?id=<?php echo $row["id"] ?>" class="delete">Delete</a></td>
     </tr>
 	<?php 
 	}
