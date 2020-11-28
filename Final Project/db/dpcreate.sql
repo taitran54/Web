@@ -102,6 +102,12 @@ create table if not exists `SubmitFile` (
     foreign key (`id_account`) references `Account` (`id`)
 );
 
+create table if not exists `Resetpass`(
+	`token` varchar (32) not null,
+    `email` varchar (255) not null,
+    primary key (`token`, `email`)
+);
+
 insert into `Profile` (`name`, `address`, `phone`, `birth`, `email`,`image`) 
 	values (N'Quản Trị', N'Local', '0000000001', '2020-01-01','admin@local.com' ,'uploads/avatar/defalut.png');
     

@@ -10,12 +10,11 @@
     $phone = $_POST["phone"];
 
     $target_dir = "uploads/avatar/";
-
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION)); 
-
+    echo ($target_file);
     if (!move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+
+        echo ("Problem");
         header ("Location: register.php?error=image");
         exit;
     }
@@ -36,8 +35,9 @@
     
 
     require "connection.php";
-
-    if (!isset($_POST["id"])){
+    
+    if ($_POST["id"]=="" or !isset($_POST["id"])){
+        
         $sql = "SELECT A.id FROM Account A WHERE A.username= ?";
 
         $stm = $conn->prepare ($sql);
@@ -50,6 +50,7 @@
             header ("Location: register.php?error=user");
             exit;
         }
+        
 
         $sql = "SELECT P.id FROM Profile P WHERE P.email= ?";
 
@@ -69,7 +70,8 @@
                 VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
-            $stm = $conn -> prepare ($sql)
+            
+            $stm = $conn -> prepare ($sql);
             $stm-> bind_param("ssssss", $name, $email, $address, $phone, $birth, $target_file);
             $stm-> execute();
 
@@ -85,7 +87,7 @@
             //insert into account
             $sql = "INSERT INTO Account (username, password, role, id_profile) VALUES  (?, ?, ?, ?)";
 
-            $stm = $conn -> prepare ($sql)
+            $stm = $conn -> prepare ($sql);
             $stm-> bind_param("sssi", $username, $password, $role, $id_profile);
             $stm-> execute();
 
@@ -93,7 +95,7 @@
             $_SESSION["username"] = $username;
             $stm ->close();
             $conn ->close();
-            header("Location: index.php");
+            header("Location: Homepage.php");
             exit;
             
         } catch (Exception $e) {
@@ -104,7 +106,6 @@
 
     } else { //MODIFY Account and Profile
         $sql = "SELECT A.id FROM Account A WHERE A.username= ?";
-
         $stm = $conn->prepare ($sql);
         $stm-> bind_param('s', $username);
         $stm->execute();
@@ -162,6 +163,6 @@
     $stm->close();
     $conn -> close();
 
-    header("Location:#");
+    header("Location:login.php");
     //Status: Finish 
 ?>
