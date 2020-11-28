@@ -12,8 +12,134 @@
         </title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <script src="main.js/validformregis.js"></script>
+        <style type="text/css">
+                        *{
+                padding: 0px;
+                margin: 0px;
+                font-family: sans-serif;
+                box-sizing: border-box;
+            }
+            .container{
+                width: 100%;
+                max-width: 1200px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .col-6{
+                float: left;
+                width: 50%;
+            }
+            .clear{
+                clear: both;
+            }
+            h1{
+                color: #009999;
+                font-size: 20px;
+                margin-bottom: 30px;
+            }
+
+            .register-form{
+                width: 100%;
+                max-width: 400px;
+                margin: 20px auto;
+                background-color: #ffffff;
+                padding: 15px;
+                border: 2px dotted #cccccc;
+                border-radius: 10px;
+            }
+
+            .input-box{
+                margin-bottom: 10px;
+            }
+            .input-box input[type='text'],
+            .input-box input[type='password'],
+            .input-box input[type='date']{
+                padding: 7.5px 15px;
+                width: 100%;
+                border: 1px solid #cccccc;
+                outline: none;
+                font-size: 16px;
+                display: inline-block;
+                height: 40px;
+                color: #666666;
+            }
+            .input-box select{
+                padding: 7.5px 15px;
+                width: 100%;
+                border: 1px solid #cccccc;
+                outline: none;
+                font-size: 16px;
+                display: inline-block;
+                height: 40px;
+                color: #666666;
+            }
+            .input-box option{
+                font-size: 16px;
+            }
+            .input-box input[type='checkbox']{
+                height: 1.5em;
+                width: 1.5em;
+                vertical-align: middle;
+                line-height: 2em;
+            }
+            .input-box textarea{
+                padding: 7.5px 15px;
+                width: 100%;
+                border: 1px solid #cccccc;
+                outline: none;
+                font-size: 16px;
+                min-height: 120px;
+                color: #666666;
+            }
+            .btn-box{
+                text-align: right;
+                margin-top: 30px;
+            }
+            .btn-box button{
+                padding: 7.5px 15px;
+                border-radius: 2px;
+                background-color: #009999;
+                color: #ffffff;
+                border: none;
+                outline: none;
+            }   
+        </style>
+        <script type="text/javascript">
+            
+            function validateRegisterForm() {
+                var user = document.myRegisterForm.username.value;
+                var pass = document.myRegisterForm.password.value;
+                var addre = document.myRegisterForm.address.value;
+                var pass2 = document.myRegisterForm.password2.value;
+                var fname = document.myRegisterForm.fullname.value;
+                var phonee = document.myRegisterForm.phone.value;
+                var images = document.myRegisterForm.image.value;
+                var date = document.myRegisterForm.dateofbirth.value;
+                var rol = document.myRegisterForm.role.value;
+                
+                
+                if ( phonee == "" || images == "" || date == "" || rol == "" || user == "" || fname =="" || addre == "") {
+                    alert("Please Fill All Information");
+                    return false;
+                }
+                if (pass.length < 6  ) {
+                    alert("Password must be at least 6 characters long.");
+                    return false;
+                }
+                if (pass2.length < 6 ) {
+                    alert("Password must be at least 6 characters long.");
+                    return false;
+                }
+                if (pass==pass2) {
+                    return true;
+                }
+                else if (pass!=pass2) {
+                    alert("password must be same!")
+                    return false;
+                }
+            }   
+
+        </script>
     </head>
     <body>
 
