@@ -2,17 +2,15 @@
 <html lang="en">
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Join Class</title>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
       <style type="text/css">
           .formjoinclass {
             position: absolute;
-            left: 500px;
-            bottom: 250px;
-          }
-          .currentuser{
-            position: absolute;
-            left: 500px;
+            left: 25%;
+            right: 25%;
+            
           }       
       </style>
       <script type="text/javascript">
@@ -40,18 +38,6 @@
          </ul>
       </nav>
       
-      <form class="currentuser">
-        <div class="form-group">
-          <label for="inputcurrentuser">You're currently signed in as:</label>
-          <br>
-          <img src="1.jpg"  class="rounded-circle z-depth-0"
-                    alt="avatar image" height="35">
-                    <small id="namedisplay" class="form-text text-muted">Name display from db</small>
-                    <small id="emaildisplay" class="form-text text-muted">Email display from db</small>
-          <button type="submit" class="btn btn-primary">Switch Account</button>
-        </div>
-      </form>
-
       <form class="formjoinclass" name="formjoinclass" method="post" onsubmit="return validationJoinClassName()">
         <div class="form-group">
           <label for="inputclassname">Class Name</label>
@@ -59,7 +45,7 @@
           <input type="text" class="form-control" id="classname" aria-describedby="className" placeholder="Class Name">         
           <button type="submit" class="btn btn-primary">Join</button>
         </div>
-      </form>
+      </form>    
       
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
