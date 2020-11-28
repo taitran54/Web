@@ -28,16 +28,16 @@
 	$buttonTitle = "Add";
 
 	
-	if (isset($_POST["id"])) {
+	if (isset($_GET["id"])) {
 		require "connection.php";
-		$id = $_POST["id"];
+		$id = $_GET["id"];
 		$sql = "SELECT A.username, C.name, C.date, C.code  FROM class C, account A WHERE A.id =C.id_teacher AND C.id=" . $id;
 		$result = $conn->query($sql);
 		$row = $result->fetch_assoc();
 		if ($row) {
 			$name = $row["name"];
 			$creatorusername = $row["username"];
-			$room = $row["room"];
+			// $room = $row["room"];
 			$code = $row["code"];
 		}
 		$title = "Update Class";

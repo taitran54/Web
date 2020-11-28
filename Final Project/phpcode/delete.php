@@ -11,5 +11,5 @@ if ($conn->query($sql) === FALSE) {
 
 $conn->close();
 
-header("Location: class.php");
+// header("Location: classadmin.php");
 ?>

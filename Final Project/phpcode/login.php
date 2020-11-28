@@ -36,7 +36,7 @@
                                 header("Location: classadmin.php");
                             }
                             else {
-                                header("Location: index.php");
+                                header("Location: Homepage.php");
                             }
                         } else {
                             echo "<p>INVALID USERNAME OR PASSWORD</p>";

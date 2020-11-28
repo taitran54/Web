@@ -95,14 +95,14 @@ if (!isset($_SESSION["username"])) {
 	<?php
 	require "connection.php";
 	
-	$sql = "SELECT * FROM class";
+	$sql = "SELECT C.id, A.username, C.name, C.date, C.image, C.code FROM class C, account A WHERE C.id_teacher = A.id";
 	$result = $conn->query($sql);
 	
 	while($row = $result->fetch_assoc()) {
 	?>
     <tr class="item">
-		<td><?php echo $row["id_teacher"] ?></td>
-		<td><?php echo $row["subject"] ?></td>
+		<td><?php echo $row["username"] ?></td>
+		<td><?php echo $row["name"] ?></td>
 		<td><img src="<?php echo $row["image"] ?>" style="max-height: 80px"></td>
 		<td><?php echo $row["date"] ?></td>
 		<td><?php echo $row["code"] ?></td>

@@ -88,6 +88,13 @@
             $stm = $conn -> prepare ($sql)
             $stm-> bind_param("sssi", $username, $password, $role, $id_profile);
             $stm-> execute();
+
+            session_start();
+            $_SESSION["username"] = $username;
+            $stm ->close();
+            $conn ->close();
+            header("Location: index.php");
+            exit;
             
         } catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
@@ -145,6 +152,7 @@
             $stm = $conn -> prepare ($sql);
             $stm-> bind_param("sssi", $username, $password, $role, $id);
             $stm-> execute();
+
         }
         catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
