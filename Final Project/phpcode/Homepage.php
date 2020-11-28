@@ -55,31 +55,38 @@
   </div>
 </nav>
 <ol class="r">
-	<li>
+	<?php 
+	session_start();
+	require "connection.php";
+	$username = $_SESSION["username"];
+	$sql="	SELECT C.id, C.name, P.name AS teachername, C.date, C.image
+			FROM Joining J, Class C, Account A1, Profile P
+			WHERE A1.id_profile = P.id
+				AND C.id_teacher = A1.id
+				AND J.id_class = C.id
+    			AND J.approval = 1
+    			AND J.id_account =
+    				(SELECT A2.id FROM Account A2
+					WHERE A2.username = '$username');";
+	$result = $conn -> query($sql);
+	while ($row = $result ->fetch_assoc()){
+	?>
+	<li >
 		<div class="div_left">
-		<div class="col-lg-4 col-md-6 mb-4">
-			<div class="card">
-				<h1 class="text">English 5</h1>
-				<h2 class="text1"><small>106</small></h2>
-				<img src="img/1.jpg" class="card-img-top" alt="...">
+			<a href = "index.php?id=<?php echo($row["id"]);?>">
+			<div class="col-lg-4 col-md-6 mb-4">
+				<div class="card" >
+					<h1 class="text"><?php echo ($row["name"]);?></h1>
+					<h2 class="text1"><small><?php echo($row["teachername"]);?></small></h2>
+					<img src="<?php echo($row["image"]);?>" class="card-img-top" alt="...">
+				</div>
 			</div>
-		</form>
-		</div>
+			</a>
 		</div>
 	</li>
-	<li>
-		<div class="div_right">
-		<div class="col-lg-4 col-md-6 mb-4">
-		<form action="AddClass.php" method="POST">
-			<div class="card">
-			<h1 class="text"><small>Công Nghệ Phần Mềm</small></h1>
-			<h2 class="text1"><small>HK1_2020_502045_CNPM_N5T1</small></h2>
-			<img src="img/2.jpg" class="card-img-top" alt="...">
-			</div>
-		</form>
-		</div>
-		</div>
-	</li>
+	<?php
+	}
+	?>
 </ol>
 </body>
 </html>

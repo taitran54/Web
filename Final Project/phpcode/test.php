@@ -1,4 +1,4 @@
 <?php 
     require ("function.php");
-    echo (getCurrentDateTime());
+    echo (randomString(32));
 ?>
