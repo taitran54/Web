@@ -39,6 +39,7 @@ create table if not exists `Class` (
 create table if not exists `Joining` (
 	`id_class` int (11) not null,
     `id_account` int (11) not null,
+    `approval` int (1) not null,
     `date` datetime,
     primary key (`id_class`, `id_account`),
     foreign key (`id_class`) references `Class` (`id`),

@@ -45,7 +45,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Logout</a>
+        <a class="nav-link" href="logout.php">Logout</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -58,11 +58,10 @@
 	<li>
 		<div class="div_left">
 		<div class="col-lg-4 col-md-6 mb-4">
-		<form action="AddClass.php" method="POST">
 			<div class="card">
-			<h1 class="text">English 5</h1>
-			<h2 class="text1"><small>106</small></h2>
-			<img src="img/1.jpg" class="card-img-top" alt="...">
+				<h1 class="text">English 5</h1>
+				<h2 class="text1"><small>106</small></h2>
+				<img src="img/1.jpg" class="card-img-top" alt="...">
 			</div>
 		</form>
 		</div>

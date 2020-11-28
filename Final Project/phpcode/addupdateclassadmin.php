@@ -1,4 +1,6 @@
 <?php
+// FULL FUNCTION ADD, UPDATE CLASS FOR TEACHER OR ADMIN
+
 require("function.php");
 $creatorid = getId($_POST["teacherusername"]);
 $name = $_POST["classname"];
