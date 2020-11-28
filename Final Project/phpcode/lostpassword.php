@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <title>Forgot Password</title>
-    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
         body{
             margin: 0;
