@@ -99,7 +99,7 @@
             // Content
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = 'ResetPassword';
-            $mail->Body    = "Click <a href='http://localhost:80/finalproject/Final Project/phpcode/test.php?email=$email'>Vào đây</a> để xác minh tài khoản";
+            $mail->Body    = "Click <a href='http://localhost:80/finalproject/Final Project/phpcode/resetpassword.php?email=$email&token=$token'>Vào đây</a> để xác minh tài khoản";
             // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
             $mail->send();

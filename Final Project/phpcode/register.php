@@ -195,11 +195,11 @@
                     </div>
 
                     <div class="input-box">    
-                        Password: <input type="password" name="password" placeholder="Enter Password" value = "<?php echo ($password)?>" required><br> 
+                        Password: <input type="<?php echo isset($_GET['edit'])? 'hidden': 'password';?>" name="password" placeholder="Enter Password" value = "<?php echo ($password)?>" required><br> 
                     </div>
 
                     <div class="input-box">
-                        Re-type Password: <input type="password" name="password2"  placeholder="Re-type Password" value = "" required>
+                        Re-type Password: <input type="<?php echo isset($_GET['edit'])? 'hidden': 'password';?>" name="password2"  placeholder="Re-type Password" value = "" required>
                     </div>
 
                     <div class="input-box">
