@@ -11,10 +11,12 @@ $stm -> bind_param ('s', $code);
 $stm ->execute();
 $result = $stm -> get_result();
 if ($row = $result->fetch_assoc()){
-    $id_class=$row[id];
+    $id_class=$row['id'];
+    echo ($id_class);
+    echo ($id_account);
     $sql = "INSERT INTO Joining (id_account, id_class, approval)
             VALUES ($id_account, $id_class, 0)";
-    if ($conn -> execute($sql)){
+    if ($result= $conn -> query($sql)){
         header("Location: Homepage.php");
         exit;
     }

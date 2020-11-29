@@ -30,7 +30,7 @@
 	</head>
    
 	<body>
-	<form class="formjoinclass" name="formjoinclass" method="post" onsubmit="return validationJoinClassName()">
+	<form class="formjoinclass" action = "processjoin.php"name="formjoinclass" method="post" onsubmit="return validationJoinClassName()">
 		<div class="form-group" style="width:100%;">
 		<nav class="navbar navbar-expand-sm navbar-dark bg-primary" style="width:100%;">
 			<a class="navbar-brand" href="Homepage.php"><i class="glyphicon glyphicon-remove-circle"></i></a>
@@ -46,9 +46,18 @@
 			</ul>
 		</nav>
 		<label for="inputclassname">Class Name</label>
-		<input type="text" class="form-control" id="code" aria-describedby="className" placeholder="Code">		
+		<input type="text" class="form-control" id="code" name ="code" aria-describedby="className" placeholder="Code">		
 		<small class="form-text text-muted">Ask your teacher for the class name, then enter it here.</small>		
 		</div>    
+		<?php
+			if (isset($_GET["error"])){
+			echo '<script language="javascript">';
+			if ($_GET["error"]=="code"){
+				echo 'alert("Your code is invalid")';
+			}
+			echo '</script>';
+			}
+		?>
 	</form> 	
 	
 	</body>
