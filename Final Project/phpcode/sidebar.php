@@ -4,11 +4,14 @@
     </head>
 
     <body>
-		<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
-			<button onclick="w3_close()" class="w3-bar-item w3-large" style="font-size:20px;font-weight:bold;">☰</button>
+		<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none;width:16%" id="mySidebar">
+			<button onclick="w3_close()" class="w3-bar-item w3-xlarge w3-white" style="font-size:20px;font-weight:bold;">☰</button>
 			<a href="classadmin.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">Class list</a>
 			<a href="classform.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">Create class</a>
 			<a href="logout.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">Logout</a>
+			<a href="classform.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;"><i class="fa fa-address-card" style="padding-right:10px;"></i>Create class</a>
+			<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;"><i class="material-icons" style="padding-right:10px;">person_add</i>Create account</a>
+			<a href="logout.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;"><i class='fas fa-door-open' style="padding-right:10px;"></i>Logout</a>
 		</div>
 		<div class="w3-white">
 			<button class="w3-button w3-white w3-xlarge" onclick="w3_open()">☰</button>

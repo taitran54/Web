@@ -11,16 +11,14 @@ if (!isset($_SESSION["username"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 	<link rel="shorcut icon" href="uploads/earth.jpg" type="image/jpg">
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
@@ -60,27 +58,9 @@ if (!isset($_SESSION["username"])) {
 </style>
 	
 
-	<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none;width:16%" id="mySidebar">
-		<button onclick="w3_close()" class="w3-bar-item w3-xlarge w3-white" style="font-size:20px;font-weight:bold;">☰</button>
-		<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;"><i class="glyphicon glyphicon-home" style="padding-right:10px;"></i>Home</a>
-		<a href="classadmin.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;"><i class='fas fa-list-alt' style="padding-right:10px;"></i>Class list</a>
-		<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;"><i class='fas fa-lock' style="padding-right:10px;"></i>Account list</a>
-		<a href="classform.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;"><i class="fa fa-address-card" style="padding-right:10px;"></i>Create class</a>
-		<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;"><i class="material-icons" style="padding-right:10px;">person_add</i>Create account</a>
-		<a href="logout.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;"><i class='fas fa-door-open' style="padding-right:10px;"></i>Logout</a>
-	</div>
-	<div class="w3-white">
-		<button class="w3-button w3-white w3-xlarge" onclick="w3_open()">☰</button>
-	</div>
-	<script>
-		function w3_open() {
-			document.getElementById("mySidebar").style.display = "block";
-		}
-
-		function w3_close() {
-			document.getElementById("mySidebar").style.display = "none";
-		}
-	</script>
+<?php
+	include 'sidebar.php';
+?>
 	
 <table cellpadding="10" cellspacing="10" border="0" style="border-collapse: collapse; margin: auto" width=100%>
 	
