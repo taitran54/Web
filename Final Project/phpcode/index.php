@@ -58,8 +58,9 @@
 </head>
 <body>
 	<div class="card-group">
-			<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+			<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none;width:19%;" id="mySidebar">
 				<button onclick="w3_close()" class="w3-bar-item w3-large" style="font-size:20px;font-weight:bold;">☰</button>
+				<a href="checkjoin.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;border-bottom:1px solid black;"><i class='fas fa-portrait' style="font-size:35px;padding-right:10px;"></i>Check join</a>
 				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">A</a>
 				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">B</a>
 				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">C</a>
@@ -70,7 +71,7 @@
 			</div>
 			
 			<div class="card bg-gradient-light border-0">	
-				<h3> To-do </h3>
+				<h3> Class name </h3>
 			</div>
 				
 			<div class="card bg-gradient-light border-0">													
