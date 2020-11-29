@@ -27,11 +27,14 @@
       <li class="nav-item active">
         <a class="nav-link" href="#"><i class="fa fa-home"></i> Classes<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <!--<li class="nav-item">
         <a class="nav-link" href="#"><i class="fa fa-calendar-o"></i> Calendar</a>
-      </li>
+      </li>-->
 	  <li class="nav-item">
         <a class="nav-link" href="#"><i class="fa fa-plus"></i> Add Class</a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="joinclass.php"><i class="fa fa-plus"></i> Join Class</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
