@@ -127,6 +127,15 @@
 			</form>
 			</div>
 		</div>
+		<?php
+			if (isset($_GET["error"])){
+			echo '<script language="javascript">';
+			if ($_GET["error"]=="teacher"){
+				echo 'alert("Your teacher username is invalid.")';
+			}
+			echo '</script>';
+			}
+		?>
 
 		<footer class="my-5 pt-5 text-muted text-center text-small">
 		</footer>
