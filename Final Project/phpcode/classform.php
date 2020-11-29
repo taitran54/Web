@@ -9,7 +9,17 @@
 
     <title>Add/Update Class</title>
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<link rel="shorcut icon" href="uploads/earth.jpg" type="image/jpg">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="shorcut icon" href="uploads/earth.jpg" type="image/jpg">	
 	
   </head>
@@ -52,7 +62,9 @@
 		</div>
 
 		<div class="row">
-			<div class="col-md order-md-1">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-10 order-md-1">
 			<form action="addupdateclassadmin.php" method="POST" enctype="multipart/form-data">
 				<input type="hidden" name="id" value="<?php echo $id ?>">
 				<input type="text" id="date" name="date" value="<?php echo $date ?>" required hidden>
