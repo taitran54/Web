@@ -6,20 +6,7 @@
  <style>
 	<link rel="stylesheet" href="style.css">
 </style>
-    <script type="text/javascript">
-        function validateLoginForm() {
-            var user = document.myLoginForm.username.value;
-            var pass = document.myLoginForm.password.value;
-            if ( user == "" || pass == "") {
-                alert("Please Fill All Information");
-                return false;
-            }
-            if (pass.length < 6  ) {
-                alert("Password must be at least 6 characters long.");
-                return false;
-            }
-        }
-    </script>
+<script type="text/javascript" src="main.js"></script>
 </head>
 <body>
     <main>
