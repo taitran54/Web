@@ -94,7 +94,7 @@
 			</div>
 			
 			<div class="card bg-gradient-light text-left border-0 align-middle" style="padding:5px 0px 0px 0px;">	
-				<a href="peopleinclass.php?id=<?php echo ($idclass );?>" style="padđing-top:20px;"><h3>People</h3></a>
+				<a href="people.php?id=<?php echo ($idclass );?>" style="padđing-top:20px;"><h3>People</h3></a>
 			</div>
 			<?php 
 				session_start();
