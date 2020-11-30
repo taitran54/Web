@@ -98,7 +98,16 @@
 				<h6 class="form-text text-muted" style="padding-left:92px;text-align:center;">If you have trouble joining the class, go to the <a href="https://support.google.com/edu/classroom/answer/6020297" style="color:blue;">Help Center article</a>
 			</div>
 			</div>
-		</div> </br>  
+		</div> 
+		<?php
+			if (isset($_GET["error"])){
+			echo '<script language="javascript">';
+			if ($_GET["error"]=="code"){
+				echo 'alert("Your code is invalid")';
+			}
+			echo '</script>';
+			}
+		?>
 	</form> 	
 	
 	</body>
