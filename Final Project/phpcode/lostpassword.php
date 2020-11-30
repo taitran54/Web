@@ -9,9 +9,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
 	<link rel="stylesheet" href="style.css">
-</style>
     <script type="text/javascript">
         function validateLostPassForm() {
             var user = document.myLostPassForm.username.value;
