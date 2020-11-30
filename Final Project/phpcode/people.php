@@ -57,7 +57,7 @@
 </style>
 </head>
 <body>
-	<div class="card-group">
+	<div class="card-group" style="border-bottom:1px solid black;">
 			<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none;width:19%;" id="mySidebar">
 				<button onclick="w3_close()" class="w3-bar-item w3-large" style="font-size:20px;font-weight:bold;">☰</button>
 				<a href="checkjoin.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;border-bottom:1px solid black;"><i class='fas fa-portrait' style="font-size:35px;padding-right:10px;"></i>Check join</a>
@@ -78,7 +78,7 @@
 			</div>
 			
 			<div class="card bg-gradient-light border-0 align-middle text-right" style="padding:5px 0px 0px 0px;">	
-				<a href="index.php" style="padđing-top:20px;color:red;"><h3>Stream</h3></a>
+				<a href="index.php" style="padđing-top:20px;"><h3>Stream</h3></a>
 			</div>
 			
 			<div class="card bg-gradient-light text-center border-0 align-middle" style="padding:5px 0px 0px 0px;">	
@@ -86,7 +86,7 @@
 			</div>
 			
 			<div class="card bg-gradient-light text-left border-0 align-middle" style="padding:5px 0px 0px 0px;">	
-				<a href="people.php" style="padđing-top:20px;"><h3>People</h3></a>
+				<a href="people.php" style="padđing-top:20px;color:red;"><h3>People</h3></a>
 			</div>
 			
 			<div class="card bg-gradient-light border-0">			
@@ -109,99 +109,58 @@
 			</script>
 	</div> 
 	
-	<div class="card border-0">			
-
-			<div class="card-body">
-				<div class="container" style="height:225px;width:65%;background-image:url(uploads/violet.jpg); background-size:cover;">
-					<h1 style="text-align:top; padding:10px 0px 0px 10px; color:white; font-weight:white;"> TA6 </h1>
-				</div>
-			</div>
-
+	<br></br>
+	
+	<div class="card-group bg-white">
+		<div class="card border-0">
+		</div>
+		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
+			<h3> Teachers </h3>
+		</div>
+		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
+		</div>
+		<div class="card border-0">
+		</div>
 	</div>
 	
-	<div class="card border-0">	
-
-			<div class="card-header border-0" style="background-color:white;">
-				<div class="container" style="height:85px;width:67%;">
-					<table border=0>
-						<td style="border:1px solid black;width:25%;padding-left:20px;">
-							<h6>Upcoming</h6> 
-							<h6>Woohoo, no work due soon!</h6> 
-							<a href="#" style="padding-left:150px;"> View all</a> 
-						</td>
-						
-						<td style="width:3%;">
-						</td>
-						
-						<td style="border:1px solid black;padding:0px 20px 0px 20px; width:1150px;" onclick="myFunction()">
-							<h3><i class='far fa-comment-dots'> Share something with your class...</h3></i>
-						</td>						
-							<script>
-								function myFunction() {
-									var x = document.getElementById("demo");
-									if (x.className.indexOf("w3-show") == -1) {
-										x.className += " w3-show";
-										x.previousElementSibling.className += " w3-green";
-									} else { 
-										x.className = x.className.replace(" w3-show", "");
-										x.previousElementSibling.className = 
-										x.previousElementSibling.className.replace(" w3-green", "");
-									}
-								}
-							</script>							
-					</table>
-				</div>
-			</div>
-			
-			<div class="card-body border-0" style="background-color:white;">
-				<div class="container" style="height:225px;width:67%;">
-					<table border=0>
-						<td style="border:0px solid black;width:25%;padding-left:20px;">
-						</td>
-						
-						<td style="width:3%;">
-						</td>
-						
-						<td style="border:0px solid black;padding:0px 0px 0px 0px; width:1150px;">
-							<div id="demo" class="w3-hide w3-bar-block w3-card w3-hide" style="width:700px;">
-								<div class="card-header w3-bar-item">
-									<div class="form-group">
-										<textarea class="form-control" rows="5" id="comment" placeholder="Share with your class"></textarea>
-									</div>
-								</div>
-								<div class="card-body w3-bar-item">
-									<input type="file" name="fileupdate" value="Choose File">
-									<input type="submit" placeholder="Send" value="Send">
-								</div>
-							</div>
-							<p></p>
-							<div class="container" style="border:1px solid black;">
-								something
-							</div>
-						</td>
-					</table>
-				</div>
-			</div>
-			
-			<!--<div class="card-footer border-0" style="background-color:white;">
-				<div class="container" style="height:225px;width:67%;">
-					<table border=0>
-						<td style="border:0px solid black;width:25%;padding-left:20px;">
-						</td>
-						
-						<td style="width:3%;">
-						</td>
-						
-						<td style="border:1px solid black;padding:0px 20px 0px 20px; width:1150px;">
-							<h3>something</h3>
-						</td>						
-							<script>
-							</script>							
-					</table>
-				</div>
-			</div>-->
-						
+	<div class="card-group bg-white">
+		<div class="card border-0">
+		</div> 
+		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
+			<h3> Teachers </h3>
+		</div>
+		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
+		</div>
+		<div class="card border-0">
+		</div>
 	</div>
 	
-</body>
-</html>
+	<br></br>
+	<br></br>
+	
+	<div class="card-group bg-white border-0">
+		<div class="card border-0">
+		</div>
+		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
+			<h3> Classmates </h3>
+		</div>
+		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
+		</div>
+		<div class="card border-0">
+		</div>
+	</div>
+	
+	<div class="card-group bg-white">
+		<div class="card border-0">
+		</div>
+		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
+			<h3> Classmates </h3>
+		</div>
+		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
+		</div>
+		<div class="card border-0">
+		</div>
+	</div>
+		
+	
+	
