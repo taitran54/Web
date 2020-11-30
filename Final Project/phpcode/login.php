@@ -3,12 +3,10 @@
     <title>Login</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
- <style>
-	<link rel="stylesheet" href="style.css">
-</style>
-<script type="text/javascript" src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="main.js"></script>
 </head>
-<body>
+<body id="login">
     <main>
         <div class="loginbox">
         <img src="uploads/avatar/avatar.png" class="avatar">
@@ -31,7 +29,6 @@
                         $stm->execute();
                         $result = $stm ->get_result();
                         $num_row = mysqli_num_rows($result);
-                        echo ($num_row);
                         if ($num_row > 0) {
                             $row = $result -> fetch_assoc();
                             $_SESSION["username"] = $username;
@@ -43,13 +40,13 @@
                                 header("Location: Homepage.php");
                             }
                         } else {
-                            echo "<p>INVALID USERNAME OR PASSWORD</p>";
+                            echo "<p>INVALID USERNAME/PASSWORD</p>";
                         }
                     }
                 ?>
-                <input type="submit" name="" value="Login">
-                <a href="lostpassword.php">Lost your password?</a><br>
-                <a href="register.php">Don't have an account?</a>
+                <br><input type="submit" name="" value="Login"></br>
+                <a href="lostpassword.php" style="font-size:16px;">Lost your password?</a></br>	
+                <a href="register.php" style="font-size:16px;">Don't have an account?</a>
             </form>      
         </div>
     </main>
