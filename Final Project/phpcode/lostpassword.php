@@ -10,16 +10,7 @@
 	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="style.css">
-    <script type="text/javascript">
-        function validateLostPassForm() {
-            var user = document.myLostPassForm.username.value;
-            var phonee = document.myLostPassForm.phone.value;
-            if ( phonee == ""|| user == ""  ) {
-                alert("Please Fill All Information");
-                return false;
-            }
-        }
-    </script>
+	<script type="text/javascript" src="main.js"></script>
 </head>
 <body>
     <main>
