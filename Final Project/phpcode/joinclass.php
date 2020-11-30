@@ -30,7 +30,7 @@
 	</head>
    
 	<body>
-	<form class="formjoinclass" name="formjoinclass" method="post" onsubmit="return validationJoinClassName()">
+	<form class="formjoinclass" name="formjoinclass" action = "processjoin.php" method="post" onsubmit="return validationJoinClassName()">
 		<div class="form-group">
 		<nav class="navbar navbar-expand-sm navbar-light bg-white" style="border-bottom:1px solid gray;">
 			<a class="navbar-brand" href="Homepage.php"><i class="glyphicon glyphicon-remove-circle w3-display-left" style="font-size:40px;padding-left:30px;"></i></a>
@@ -51,7 +51,7 @@
 			session_start();
 			
 			$username = $_SESSION["username"];
-			$sql = "SELECT A.username, P.name FROM Account A, Profile P
+			$sql = "SELECT A.username, P.name, P.image FROM Account A, Profile P
 					WHERE P.id = A.id_profile
 						AND A.username = '$username'";
 			$result = $conn -> query ($sql);
@@ -67,7 +67,7 @@
 					<div class="card border-0">
 					</div>
 					<div class="card border-0">
-						<img src="uploads/brb.jpg" class="rounded-circle z-depth-0 w3-display-right" alt="avatar image" height="60px" width="60px" style="margin-right:20px;">
+						<img src="<?php echo($row["image"]); ?>" class="rounded-circle z-depth-0 w3-display-right" alt="avatar image" height="60px" width="60px" style="margin-right:20px;">
 					</div>
 					<div class="card border-0">
 						<h6 class="form-text text-muted" style="padding-left:10px;text-align:left;" name="name"><?php echo ($row["name"]);?></h6></h6>
@@ -86,7 +86,7 @@
 			<div class="card-body bg-white border-0">
 				<h6 class="form-text text-muted" style="padding-right:271px;font-size:20px;text-align:center;font-weight:bold;">Class code</h6>
 				<h6 class="form-text text-muted" style="padding-left:13px;text-align:center;">Ask your teacher for the class code, then enter it here.</h6>
-				<input type="text" class="form-control" id="code" aria-describedby="className" placeholder="Class code" style="width:20%;text-align:left;margin-left:564px;height:50px;">
+				<input type="text" class="form-control" id="code"name = "code" aria-describedby="className" placeholder="Class code" style="width:20%;text-align:left;margin-left:564px;height:50px;">
 			</div>
 			
 			<div class="card-footer border-0 bg-white">

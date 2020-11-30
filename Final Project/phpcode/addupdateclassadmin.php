@@ -34,11 +34,12 @@ try{
 				$result= $conn -> query ($sql);
 				$row = $result -> fetch_assoc();
 				$id_class = $row["id"];
-
-				$sql = "INSERT INTO Joinning (id_account, id_class, approval)
-						VALUES ($creatorid, $id_class, 1)";
-				$result= $conn -> query($sql);
 			}
+
+			$sql = "INSERT INTO Joining (id_account, id_class, approval)
+						VALUES ($creatorid, $id_class, 1)";
+			echo ($sql);
+			$result= $conn -> query($sql);
 		} else {
 			$sql = "UPDATE class SET name=?, image=? , id_teacher=? WHERE id=" . $_POST["id"];
 			$stmt = $conn->prepare($sql);
@@ -60,7 +61,7 @@ if (checkAdmin($_SESSION["username"])){
 	header("Location: classadmin.php");
 }
 else {
-	header("Location: classform.php ");
+	header("Location: Homepage.php ");
 }
 
 ?>

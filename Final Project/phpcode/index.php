@@ -56,6 +56,14 @@
    
 </style>
 </head>
+<?php
+	$idclass = $_GET['id'];
+
+	require "connection.php";
+	$sql ="SELECT C.name, C.image FROM Class C WHERE C.id = $idclass";
+	$result = $conn -> query($sql);
+	$row = $result -> fetch_assoc();
+?>
 <body>
 	<div class="card-group">
 			<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none;width:19%;" id="mySidebar">
@@ -78,16 +86,35 @@
 			</div>
 			
 			<div class="card bg-gradient-light border-0 align-middle text-right" style="padding:5px 0px 0px 0px;">	
+<<<<<<< HEAD
 				<a href="index.php" style="padđing-top:20px;color:red;"><h3>Stream</h3></a>
+=======
+				<a href="index.php?id=<?php echo ($idclass );?>"" style="padđing-top:20px;color:red;"><h3>Stream</h3></a>
+>>>>>>> 2cadb7e1dc29a68bf187b945629373ca5866fab5
 			</div>
 			
 			<div class="card bg-gradient-light text-center border-0 align-middle" style="padding:5px 0px 0px 0px;">	
-				<a href="To-doMissing.php" style="padđing-top:20px;"><h3>Classwork</h3></a>
+				<a href="assignment.php?id=<?php echo ($idclass );?>"" style="padđing-top:20px;"><h3>Classwork</h3></a>
 			</div>
 			
 			<div class="card bg-gradient-light text-left border-0 align-middle" style="padding:5px 0px 0px 0px;">	
+<<<<<<< HEAD
 				<a href="people.php" style="padđing-top:20px;"><h3>People</h3></a>
+=======
+				<a href="peopleinclass.php?id=<?php echo ($idclass );?>"" style="padđing-top:20px;"><h3>People</h3></a>
 			</div>
+			<?php 
+				session_start();
+				require "function.php";
+				if (canTeach($_SESSION["username"])){
+			?>
+			<div class="card bg-gradient-light text-left border-0 align-middle" style="padding:5px 0px 0px 0px;">	
+				<a href="checkjoin.php?id=<?php echo ($idclass );?>"" style="padđing-top:20px;"><h3>Reques Join</h3></a>
+>>>>>>> 2cadb7e1dc29a68bf187b945629373ca5866fab5
+			</div>
+			<?php	
+				}
+			?>
 			
 			<div class="card bg-gradient-light border-0">			
 			</div>
@@ -112,8 +139,8 @@
 	<div class="card border-0">			
 
 			<div class="card-body">
-				<div class="container" style="height:225px;width:65%;background-image:url(uploads/violet.jpg); background-size:cover;">
-					<h1 style="text-align:top; padding:10px 0px 0px 10px; color:white; font-weight:white;"> TA6 </h1>
+				<div class="container" style="height:225px;width:65%;background-image:url(<?php echo($row["image"]); ?>); background-size:cover;">
+					<h1 style="text-align:top; padding:10px 0px 0px 10px; color:white; font-weight:white;"> <?php echo ($row["name"]); ?> </h1>
 				</div>
 			</div>
 
@@ -164,15 +191,18 @@
 						
 						<td style="border:0px solid black;padding:0px 0px 0px 0px; width:1150px;">
 							<div id="demo" class="w3-hide w3-bar-block w3-card w3-hide" style="width:700px;">
-								<div class="card-header w3-bar-item">
-									<div class="form-group">
-										<textarea class="form-control" rows="5" id="comment" placeholder="Share with your class"></textarea>
+								<form action="createstatus.php?id=<?php echo $idclass ?>" method="post" enctype="multipart/form-data">
+									<div class="card-header w3-bar-item">
+										<div class="form-group">
+											<textarea class="form-control" rows="5" id="comment" name="description" placeholder="Share with your class"></textarea>
+										</div>
 									</div>
-								</div>
-								<div class="card-body w3-bar-item">
-									<input type="file" name="fileupdate" value="Choose File">
-									<input type="submit" placeholder="Send" value="Send">
-								</div>
+									<!-- <input type="submit"> -->
+									<div class="card-body w3-bar-item">
+										<input type="file" name="fileToUpload" value="Choose File"/>
+										<input type="submit" name="send" value="Send"/>
+									</div>
+								</form>
 							</div>
 							<p></p>
 							<div class="container" style="border:1px solid black;">
@@ -182,6 +212,18 @@
 					</table>
 				</div>
 			</div>
+			<?php
+				if (isset($_GET["aleart"])){
+				echo '<script language="javascript">';
+				if ($_GET["aleart"]=="success"){
+					echo 'alert("Succes")';
+				}
+				else if ($_GET["aleart"]=="fail"){
+					echo 'alert("Fail")';
+				}
+				echo '</script>';
+				}
+			?>
 			
 			<!--<div class="card-footer border-0" style="background-color:white;">
 				<div class="container" style="height:225px;width:67%;">

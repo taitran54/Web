@@ -31,7 +31,7 @@
         <a class="nav-link" href="#"><i class="fa fa-calendar-o"></i> Calendar</a>
       </li>-->
 	  <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fa fa-plus"></i> Add Class</a>
+        <a class="nav-link" href="classform.php"><i class="fa fa-plus"></i> Add Class</a>
       </li>
 	  <li class="nav-item">
         <a class="nav-link" href="joinclass.php"><i class="fa fa-plus"></i> Join Class</a>

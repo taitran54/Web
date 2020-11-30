@@ -109,8 +109,16 @@ if (!isset($_SESSION["username"])) {
 	<?php
 	require "connection.php";
 	
-	$sql = "SELECT C.id, A.username, C.name, C.date, C.image, C.code FROM class C, account A WHERE C.id_teacher = A.id";
+	$id = $_GET['id'];
+	$sql = "SELECT A.id, A.username, P.name, P.image 
+			FROM Profile P, Account A, Joining J 
+			WHERE P.id = A.id_profile
+				AND	A.id = J.id_account
+				AND J.id_class = $id
+				AND J.approval = 0";
 	$result = $conn->query($sql);
+
+	// echo $_GET["id"];
 	
 	while($row = $result->fetch_assoc()) {
 	?>
@@ -118,10 +126,24 @@ if (!isset($_SESSION["username"])) {
 		<td><?php echo $row["username"] ?></td>
 		<td><?php echo $row["name"] ?></td>
 		<td><img src="<?php echo $row["image"] ?>" style="max-height: 80px"></td>
-        <td><a href="classform.php?id=<?php echo $row["id"] ?>">Accept</a> | <a href="deleteadmin.php?id=<?php echo $row["id"] ?>" class="delete">Decline</a></td>
+        <td><a href="processjoining.php?accept=yes&idclass=<?php echo( $_GET["id"]);?>&idaccount=<?php echo ($row["id"]); ?>">Accept</a> | 
+		<a href="processjoining.php?accept=no&idclass=<?php echo ($_GET["id"]);?>&idaccount=<?php echo ($row["id"]); ?>" class="delete">Decline</a></td>
     </tr>
 	<?php 
 	}
+	?>
+
+	<?php
+		if (isset($_GET["aleart"])){
+		echo '<script language="javascript">';
+		if ($_GET["aleart"]=="success"){
+			echo 'alert("Succes")';
+		}
+		else if ($_GET["aleart"]=="fail"){
+			echo 'alert("Fail")';
+		}
+		echo '</script>';
+		}
 	?>
     <tr class="control" style="text-align: right; font-weight: bold; font-size: 17px">
         <td colspan="8">
