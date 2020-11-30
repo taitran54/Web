@@ -86,11 +86,7 @@
 			</div>
 			
 			<div class="card bg-gradient-light border-0 align-middle text-right" style="padding:5px 0px 0px 0px;">	
-<<<<<<< HEAD
-				<a href="index.php" style="padđing-top:20px;color:red;"><h3>Stream</h3></a>
-=======
 				<a href="index.php?id=<?php echo ($idclass );?>"" style="padđing-top:20px;color:red;"><h3>Stream</h3></a>
->>>>>>> 2cadb7e1dc29a68bf187b945629373ca5866fab5
 			</div>
 			
 			<div class="card bg-gradient-light text-center border-0 align-middle" style="padding:5px 0px 0px 0px;">	
@@ -98,9 +94,6 @@
 			</div>
 			
 			<div class="card bg-gradient-light text-left border-0 align-middle" style="padding:5px 0px 0px 0px;">	
-<<<<<<< HEAD
-				<a href="people.php" style="padđing-top:20px;"><h3>People</h3></a>
-=======
 				<a href="peopleinclass.php?id=<?php echo ($idclass );?>"" style="padđing-top:20px;"><h3>People</h3></a>
 			</div>
 			<?php 
@@ -110,7 +103,6 @@
 			?>
 			<div class="card bg-gradient-light text-left border-0 align-middle" style="padding:5px 0px 0px 0px;">	
 				<a href="checkjoin.php?id=<?php echo ($idclass );?>"" style="padđing-top:20px;"><h3>Reques Join</h3></a>
->>>>>>> 2cadb7e1dc29a68bf187b945629373ca5866fab5
 			</div>
 			<?php	
 				}
