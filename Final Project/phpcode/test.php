@@ -1,4 +1,3 @@
 <?php 
-    require ("function.php");
-    echo (randomString(32));
+    header("Location: classdelete.php?id=2");
 ?>

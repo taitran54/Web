@@ -86,7 +86,7 @@ if (!isset($_SESSION["username"])) {
 		<td><img src="<?php echo $row["image"] ?>" style="max-height: 80px"></td>
 		<td><?php echo $row["date"] ?></td>
 		<td><?php echo $row["code"] ?></td>
-        <td><a href="classform.php?id=<?php echo $row["id"] ?>">Update</a> | <a href="deleteadmin.php?id=<?php echo $row["id"] ?>" class="delete">Delete</a></td>
+        <td><a href="classform.php?id=<?php echo $row["id"] ?>">Update</a> | <a href="classdelete.php?id=<?php echo $row["id"] ?>" class="delete">Delete</a></td>
     </tr>
 	<?php 
 	}
@@ -98,5 +98,17 @@ if (!isset($_SESSION["username"])) {
     </tr>
 </table>
 
+<?php
+		if (isset($_GET["aleart"])){
+		echo '<script language="javascript">';
+		if ($_GET["aleart"]=="success"){
+			echo 'alert("Succes")';
+		}
+		else if ($_GET["aleart"]=="fail"){
+			echo 'alert("Fail")';
+		}
+		echo '</script>';
+		}
+	?>
 </body>
 </html>
