@@ -60,7 +60,7 @@
 	$idclass = $_GET['id'];
 
 	require "connection.php";
-	$sql ="SELECT C.name, C.image FROM Class C WHERE C.id = $idclass";
+	$sql ="SELECT C.name, C.image FROM Class C WHERE C.id = '$idclass'";
 	$result = $conn -> query($sql);
 	$row = $result -> fetch_assoc();
 ?>
@@ -86,15 +86,15 @@
 			</div>
 			
 			<div class="card bg-gradient-light border-0 align-middle text-right" style="padding:5px 0px 0px 0px;">	
-				<a href="index.php?id=<?php echo ($idclass );?>"" style="padđing-top:20px;color:red;"><h3>Stream</h3></a>
+				<a href="index.php?id=<?php echo ($idclass );?>" style="padđing-top:20px;color:red;"><h3>Stream</h3></a>
 			</div>
 			
 			<div class="card bg-gradient-light text-center border-0 align-middle" style="padding:5px 0px 0px 0px;">	
-				<a href="assignment.php?id=<?php echo ($idclass );?>"" style="padđing-top:20px;"><h3>Classwork</h3></a>
+				<a href="assignment.php?id=<?php echo ($idclass );?>" style="padđing-top:20px;"><h3>Classwork</h3></a>
 			</div>
 			
 			<div class="card bg-gradient-light text-left border-0 align-middle" style="padding:5px 0px 0px 0px;">	
-				<a href="peopleinclass.php?id=<?php echo ($idclass );?>"" style="padđing-top:20px;"><h3>People</h3></a>
+				<a href="peopleinclass.php?id=<?php echo ($idclass );?>" style="padđing-top:20px;"><h3>People</h3></a>
 			</div>
 			<?php 
 				session_start();
@@ -102,7 +102,7 @@
 				if (canTeach($_SESSION["username"])){
 			?>
 			<div class="card bg-gradient-light text-left border-0 align-middle" style="padding:5px 0px 0px 0px;">	
-				<a href="checkjoin.php?id=<?php echo ($idclass );?>"" style="padđing-top:20px;"><h3>Reques Join</h3></a>
+				<a href="checkjoin.php?id=<?php echo ($idclass );?>" style="padđing-top:20px;"><h3>Reques Join</h3></a>
 			</div>
 			<?php	
 				}
