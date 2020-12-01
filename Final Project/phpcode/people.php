@@ -56,14 +56,18 @@
    
 </style>
 </head>
+<?php
+	session_start();
+	$idclass = $_GET['id'];
+	require "connection.php";
+?>
 <body>
 	<div class="card-group" style="border-bottom:1px solid black;">
 			<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none;width:19%;" id="mySidebar">
 				<button onclick="w3_close()" class="w3-bar-item w3-large" style="font-size:20px;font-weight:bold;">☰</button>
-				<a href="checkjoin.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;border-bottom:1px solid black;"><i class='fas fa-portrait' style="font-size:35px;padding-right:10px;"></i>Check join</a>
+				<a href="Homepage.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold; padding-left:10px"><i class='fas fa-house-user' style="font-size:35px;padding-right:10px;"></i>Classes</a>
+				<a href="checkjoin.php?id=<?php echo ($idclass );?>" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;border-bottom:1px solid black;"><i class='fas fa-portrait' style="font-size:35px;padding-right:17px;"></i>Request Join</a>
 				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">A</a>
-				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">B</a>
-				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">C</a>
 			</div>
 			
 			<div class="w3-white">
@@ -78,15 +82,15 @@
 			</div>
 			
 			<div class="card bg-gradient-light border-0 align-middle text-right" style="padding:5px 0px 0px 0px;">	
-				<a href="index.php" style="padđing-top:20px;"><h3>Stream</h3></a>
+				<a href="index.php?id=<?php echo ($idclass );?>" style="padđing-top:20px;"><h3>Stream</h3></a>
 			</div>
 			
 			<div class="card bg-gradient-light text-center border-0 align-middle" style="padding:5px 0px 0px 0px;">	
-				<a href="To-doMissing.php" style="padđing-top:20px;"><h3>Classwork</h3></a>
+				<a href="assignment.php?id=<?php echo ($idclass );?>" style="padđing-top:20px;"><h3>Classwork</h3></a>
 			</div>
 			
 			<div class="card bg-gradient-light text-left border-0 align-middle" style="padding:5px 0px 0px 0px;">	
-				<a href="people.php" style="padđing-top:20px;color:red;"><h3>People</h3></a>
+				<a href="people.php?id=<?php echo ($idclass );?>" style="padđing-top:20px;color:red;"><h3>People</h3></a>
 			</div>
 			
 			<div class="card bg-gradient-light border-0">			
@@ -117,6 +121,13 @@
 		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
 			<h3> Teachers </h3>
 		</div>
+	<?php
+	$sql ="SELECT P.name FROM profile P
+			WHERE P.id in (SELECT id_account FROM joining WHERE id_class = '$idclass')
+			AND P.id in (SELECT id FROM account WHERE role = 'teacher')";
+	$result = $conn -> query($sql);
+	while($row = $result->fetch_assoc()) {
+	?>
 		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
 		</div>
 		<div class="card border-0">
@@ -125,10 +136,13 @@
 	
 	<div class="card-group bg-white">
 		<div class="card border-0">
-		</div> 
+		</div> 	
 		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
-			<h3> Teachers </h3>
+			<h3> <?php echo ($row['name']);?> </h3>
 		</div>
+	<?php
+	}
+	?>
 		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
 		</div>
 		<div class="card border-0">
@@ -137,14 +151,23 @@
 	
 	<br></br>
 	<br></br>
-	
+		
 	<div class="card-group bg-white border-0">
 		<div class="card border-0">
 		</div>
 		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
 			<h3> Classmates </h3>
 		</div>
-		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
+	<?php
+	$sql ="SELECT P.name FROM profile P
+			WHERE P.id in (SELECT id_account FROM joining WHERE id_class = '$idclass')
+			AND P.id in (SELECT id FROM account WHERE role = 'students')";
+	$result = $conn -> query($sql);
+	
+	while($row = $result->fetch_assoc()) {
+	?>
+		<div class="card text-right" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
+			<h3> <?php echo $result->num_rows ?> students </h3>
 		</div>
 		<div class="card border-0">
 		</div>
@@ -154,8 +177,11 @@
 		<div class="card border-0">
 		</div>
 		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
-			<h3> Classmates </h3>
+			<h3> <?php echo ($row["name"]);?> </h3>
 		</div>
+	<?php
+	}
+	?>
 		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
 		</div>
 		<div class="card border-0">
