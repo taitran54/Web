@@ -56,8 +56,6 @@ if (!isset($_SESSION["username"])) {
         font-weight: bold;
     }
 </style>
-	
-
 	<div class="card-group">
 			<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none;width:19%;" id="mySidebar">
 				<button onclick="w3_close()" class="w3-bar-item w3-large" style="font-size:20px;font-weight:bold;">☰</button>
