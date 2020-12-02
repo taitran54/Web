@@ -98,14 +98,16 @@ create table if not exists `SubmitFile` (
 	`id` int (11) not null auto_increment,
     `target_dir` varchar (255) not null,
     `id_account` int (11) not null,
+    `id_assignment` int (11) not null,
     primary key (`id`),
-    foreign key (`id_account`) references `Account` (`id`)
+    foreign key (`id_account`) references `Account` (`id`),
+    foreign key (`id_assignment`) references `Assignment` (`id`)
 );
 
 create table if not exists `Resetpass`(
 	`token` varchar (32) not null,
     `email` varchar (255) not null,
-    primary key (`token`, `email`)
+    primary key ( `email`)
 );
 
 insert into `Profile` (`name`, `address`, `phone`, `birth`, `email`,`image`) 

@@ -55,4 +55,4 @@ $conn ->close();
 header ("Location: index.php?aleart=success&id=$idclass");
 exit;
 
-?>
+?>fa
