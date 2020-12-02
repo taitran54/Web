@@ -117,7 +117,7 @@
 				$row = $result -> fetch_assoc();
 			?>
 			<div class="card text-right border-0" style="padding:15px 20px 0px 0px;">
-				<a class="p-0" href="register.php">
+				<a class="p-0" href="register.php?edit=yes">
                     <img src="<?php echo($row["avatar"]); ?>" class="rounded-circle z-depth-0" alt="avatar image" height="35">
                 </a>
 			</div>
