@@ -56,10 +56,13 @@ if (!isset($_SESSION["username"])) {
         font-weight: bold;
     }
 </style>
+	<?php
+	$idclass = $_GET['id'];
+	?>
 	<div class="card-group">
 			<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none;width:19%;" id="mySidebar">
 				<button onclick="w3_close()" class="w3-bar-item w3-large" style="font-size:20px;font-weight:bold;">☰</button>
-				<a href="index.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;border-bottom:1px solid black;"><i class='fas fa-chevron-circle-left' style="font-size:35px;padding-right:10px;"></i>Return class</a>
+				<a href="index.php?id=<?php echo ($idclass );?>"  class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;border-bottom:1px solid black;"><i class='fas fa-chevron-circle-left' style="font-size:35px;padding-right:10px;"></i>Return class</a>
 				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">A</a>
 				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">B</a>
 				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">C</a>
