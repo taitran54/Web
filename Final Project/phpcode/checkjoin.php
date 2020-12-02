@@ -20,42 +20,10 @@ if (!isset($_SESSION["username"])) {
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script type="text/javascript" src="main.js"></script>
 </head>
 <body>
 
-<style>
-    table{
-		padding-top: 50px;
-        text-align: center;
-    }
-    td{
-        padding: 10px;
-    }
-    tr.item{
-        border-top: 1px solid #5e5e5e;
-        border-bottom: 1px solid #5e5e5e;
-    }
-
-    tr.item:hover{
-        background-color: #d9edf7;
-    }
-
-    tr.item td{
-        min-width: 150px;
-    }
-
-    tr.header{
-        font-weight: bold;
-    }
-
-    a{
-        text-decoration: none;
-    }
-    a:hover{
-        color: deeppink;
-        font-weight: bold;
-    }
-</style>
 	<?php
 	$idclass = $_GET['id'];
 	?>
@@ -88,24 +56,15 @@ if (!isset($_SESSION["username"])) {
                 </a>
 			</div>
 			
-			<script>
-			function w3_open() {
-				document.getElementById("mySidebar").style.display = "block";
-			}
-
-			function w3_close() {
-				document.getElementById("mySidebar").style.display = "none";
-			}
-			</script>
 	</div>
 	
-<table cellpadding="10" cellspacing="10" border="0" style="border-collapse: collapse; margin: auto" width=100%>
+<table cellpadding="10" cellspacing="10" border="0" style="border-collapse: collapse; margin: auto; padding-top: 50px; text-align: center;" width=100%>
 	
-    <tr class="header" style="font-size:20px;">
-        <td>Username</td>
-        <td>Student name</td>
-        <td>Avatar</td>
-		<td>Date create</td>
+    <tr class="header" style="font-size:20px;font-weight: bold;">
+        <td style="padding: 10px;">Username</td>
+        <td style="padding: 10px;">Student name</td>
+        <td style="padding: 10px;">Avatar</td>
+		<td style="padding: 10px;">Date create</td>
     </tr>
 	<?php
 	require "connection.php";
@@ -123,12 +82,12 @@ if (!isset($_SESSION["username"])) {
 	
 	while($row = $result->fetch_assoc()) {
 	?>
-    <tr class="item">
-		<td><?php echo $row["username"] ?></td>
-		<td><?php echo $row["name"] ?></td>
-		<td><img src="<?php echo $row["image"] ?>" style="max-height: 80px"></td>
-        <td><a href="processjoining.php?accept=yes&idclass=<?php echo( $_GET["id"]);?>&idaccount=<?php echo ($row["id"]); ?>">Accept</a> | 
-		<a href="processjoining.php?accept=no&idclass=<?php echo ($_GET["id"]);?>&idaccount=<?php echo ($row["id"]); ?>" class="delete">Decline</a></td>
+    <tr class="item" style="border-top: 1px solid #5e5e5e;border-bottom: 1px solid #5e5e5e;min-width: 150px;">
+		<td style="padding: 10px;"><?php echo $row["username"] ?></td>
+		<td style="padding: 10px;"><?php echo $row["name"] ?></td>
+		<td style="padding: 10px;"><img src="<?php echo $row["image"] ?>" style="max-height: 80px"></td>
+        <td style="padding: 10px;"><a href="processjoining.php?accept=yes&idclass=<?php echo( $_GET["id"]);?>&idaccount=<?php echo ($row["id"]); ?>" style="text-decoration: none;font-weight: bold;">Accept</a> | 
+		<a href="processjoining.php?accept=no&idclass=<?php echo ($_GET["id"]);?>&idaccount=<?php echo ($row["id"]); ?>" class="delete" style="text-decoration: none;font-weight: bold;">Decline</a></td>
     </tr>
 	<?php 
 	}

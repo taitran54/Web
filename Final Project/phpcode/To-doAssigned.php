@@ -16,6 +16,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<script type="text/javascript" src="main.js"></script>
 </head>
 <body>
 	<div class="card-group">
@@ -66,65 +67,6 @@
 						<a href="#" class="w3-bar-item w3-button">Link</a>
 					</div>
 				
-				<script>
-				function myFunction() {
-					var x = document.getElementById("demo");
-					if (x.className.indexOf("w3-show") == -1) {
-						x.className += " w3-show";
-					} else { 
-						x.className = x.className.replace(" w3-show", "");
-					}
-				}
-				
-				function myFunction1() {
-					var x = document.getElementById("demo1");
-					if (x.className.indexOf("w3-show") == -1) {
-						x.className += " w3-show";
-						x.previousElementSibling.className += " w3-green";
-					} else { 
-						x.className = x.className.replace(" w3-show", "");
-						x.previousElementSibling.className = 
-						x.previousElementSibling.className.replace(" w3-green", "");
-					}
-				}
-
-				
-				function myFunction2() {
-					var x = document.getElementById("demo2");
-					if (x.className.indexOf("w3-show") == -1) {
-						x.className += " w3-show";
-						x.previousElementSibling.className += " w3-green";
-					} else { 
-						x.className = x.className.replace(" w3-show", "");
-						x.previousElementSibling.className = 
-						x.previousElementSibling.className.replace(" w3-green", "");
-					}
-				}
-				
-				function myFunction3() {
-					var x = document.getElementById("demo3");
-					if (x.className.indexOf("w3-show") == -1) {
-						x.className += " w3-show";
-						x.previousElementSibling.className += " w3-green";
-					} else { 
-						x.className = x.className.replace(" w3-show", "");
-						x.previousElementSibling.className = 
-						x.previousElementSibling.className.replace(" w3-green", "");
-					}
-				}
-				
-				function myFunction4() {
-					var x = document.getElementById("demo4");
-					if (x.className.indexOf("w3-show") == -1) {
-						x.className += " w3-show";
-						x.previousElementSibling.className += " w3-green";
-					} else { 
-						x.className = x.className.replace(" w3-show", "");
-						x.previousElementSibling.className = 
-						x.previousElementSibling.className.replace(" w3-green", "");
-					}
-				}
-				</script>
 			</div>
 			
 			<div class="card bg-gradient-light border-0 align-middle text-right">	
@@ -145,14 +87,6 @@
 			<div class="card border-0">
 			</div>
 			
-			<script>
-			function w3_open() {
-				document.getElementById("mySidebar").style.display = "block";
-			}
 
-			function w3_close() {
-				document.getElementById("mySidebar").style.display = "none";
-			}
-			</script>
 	</div>
 </body>

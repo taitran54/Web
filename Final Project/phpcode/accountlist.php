@@ -25,41 +25,6 @@ if (!isset($_SESSION["username"])) {
 </head>
 <body>
 
-<style>
-    table{
-		padding-top: 50px;
-        text-align: center;
-    }
-    td{
-        padding: 10px;
-    }
-    tr.item{
-        border-top: 1px solid #5e5e5e;
-        border-bottom: 1px solid #5e5e5e;
-    }
-
-    tr.item:hover{
-        background-color: #d9edf7;
-    }
-
-    tr.item td{
-        min-width: 150px;
-    }
-
-    tr.header{
-        font-weight: bold;
-    }
-
-    a.item{
-        text-decoration: none;
-    }
-    a.item:hover{
-        color: deeppink;
-        font-weight: bold;
-    }
-</style>
-	
-
 <?php
 	include 'sidebar.php';
 ?>

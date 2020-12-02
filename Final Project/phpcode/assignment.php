@@ -17,44 +17,9 @@
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-<style>
-    .bs-example{
-        margin: 20px; 
-    }
-    .navbar-nav {
-        padding-left: 400px;
-    }
-    .nav-item avatar{
-        position: absolute;
-    }
-    .imagecontent {
-      left: 200px;
-      bottom: auto;
-      position: absolute;
-    }
-    .text {
-      color: #000000;
-      position: absolute;
-      bottom: 200px;
-      
-    }
-    .content {
-      height: 400px;
-      width: 100%;
-      background-image:url(1.jpg) ;     
-      background-size: cover;
-    } 
-    .right textarea{
-      padding: 7.5px 15px;
-      width: 100%;
-      border: 1px solid #cccccc;
-      outline: none;
-      font-size: 16px;
-      min-height: 120px;
-      color: #666666;
-    }
-   
-</style>
+	<script type="text/javascript" src="main.js"></script>
+	<link rel="stylesheet" href="style.css">
+
 </head>
 <?php
 	session_start();
@@ -111,15 +76,6 @@
                 </a>
 			</div>
 			
-			<script>
-			function w3_open() {
-				document.getElementById("mySidebar").style.display = "block";
-			}
-
-			function w3_close() {
-				document.getElementById("mySidebar").style.display = "none";
-			}
-			</script>
 	</div> 
 	
 	<br></br>
