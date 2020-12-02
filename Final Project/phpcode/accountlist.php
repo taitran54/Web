@@ -85,7 +85,7 @@ if (!isset($_SESSION["username"])) {
 		<!--<td><img src="<?php echo $row["image"] ?>" style="max-height: 80px"></td>-->
 		<td><?php echo $row["role"] ?></td>
 		<td><?php echo $row["id_profile"] ?></td>
-        <td><a href="classform.php?id=<?php echo $row["id"] ?>">Edit</a> | <a href="classdelete.php?id=<?php echo $row["id"] ?>" class="delete">Delete</a></td>
+        <td><a href="accountchange.php?id=<?php echo $row["id"] ?>">Edit</a> | <a href="accountdelete.php?id=<?php echo $row["id"] ?>" class="delete">Delete</a></td>
     </tr>
 	<?php 
 	}

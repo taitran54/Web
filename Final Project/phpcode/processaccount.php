@@ -8,7 +8,12 @@
     $email = $_POST["email"];
     $birth = $_POST["dateofbirth"];
     $phone = $_POST["phone"];
-
+    if ($_GET['from']=="admin"){
+        $file = "accountlist.php";
+    }
+    else {
+        $file = "registor.php";
+    }
     $target_dir = "uploads/avatar/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     echo ($target_file);
@@ -47,7 +52,7 @@
         $num_row = mysqli_num_rows($result);
         if ($num_row!=0){
             $conn->close();
-            header ("Location: register.php?error=user");
+            header ("Location: $file?error=user");
             exit;
         }
         
@@ -61,7 +66,7 @@
         $num_row = mysqli_num_rows($result);
         if ($num_row!=0){
             $conn->close();
-            header ("Location: register.php?error=email");
+            header ("Location: $file?error=email");
             exit;
         }
         
@@ -95,7 +100,11 @@
             $_SESSION["username"] = $username;
             $stm ->close();
             $conn ->close();
-            header("Location: Homepage.php");
+            if ($file=="registor.php"){
+                header("Location: Homepage.php");
+            }else {
+                header("Location: $file");
+            }
             exit;
             
         } catch (Exception $e) {
@@ -114,7 +123,7 @@
             if ($row['id'] != $_POST["id"]){
                 $conn->close();
                 $id = $_POST["id"];
-                header ("Location: register.php?error=user");
+                header ("Location: $file?error=user");
                 exit;
             }
         }
@@ -129,7 +138,7 @@
             if ($row['id'] != $_POST["id"]){
                 $conn->close();
                 $id = $_POST["id"];
-                header ("Location: register.php?error=email");
+                header ("Location: $file?error=email");
                 exit;
             }
         }
@@ -153,6 +162,8 @@
             $stm = $conn -> prepare ($sql);
             $stm-> bind_param("ssi", $username, $role, $id);
             $stm-> execute();
+            header("Location: $file");
+            exit;
 
         }
         catch (Exception $e) {
