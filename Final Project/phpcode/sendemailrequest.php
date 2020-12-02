@@ -1,5 +1,7 @@
 <?php 
-
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 function sendRequestJoinClass ($email, $idclass){
     // Import PHPMailer classes into the global namespace
     // These must be at the top of your script, not inside a function
@@ -36,7 +38,7 @@ function sendRequestJoinClass ($email, $idclass){
         // Content
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = 'Requst join class';
-        $mail->Body    = "Click <a href='http://localhost:80/finalproject/Final Project/phpcode/accpectrequet.php?email=$email&id=$idclass'>Vào đây</a> để tham gia lớp.
+        $mail->Body    = "Click <a href='http://localhost:80/finalproject/Final Project/phpcode/acceptrequest.php?email=$email&id=$idclass'>Vào đây</a> để tham gia lớp.
                             <br></br>
                         Click <a href='http://localhost:80/finalproject/Final Project/phpcode/cancelrequest.php?email=$email&id=$idclass'>Vào đây</a> để từ chối. ";
         // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
@@ -49,6 +51,7 @@ function sendRequestJoinClass ($email, $idclass){
         return false;
     }
 }
+
 try {
     require "connection.php";
     $email = $_GET['emailkey'];
@@ -61,9 +64,26 @@ try {
     if ($num == 1){
         $row = $result ->fetch_assoc();
         $id = $row['id'];
-        
-
+        $sql = "INSERT INTO Joining (id_account, id_class, approval)
+                VALUES ($id, $idclass, 2)";
+        echo($sql);
+        if (sendRequestJoinClass($email, $idclass)){
+            $conn ->query($sql);
+             
+            header("Location: checkjoin.php?id=$idclass&aleart=success&emailkey=$email");
+            exit;
+        }else {
+            // header("Location: checkjoin.php?id=$idclass&aleart=fail&emailkey=$email");
+            // exit;
+        }
+    } else{
+        header("Location: checkjoin.php?id=$idclass&aleart=fail&emailkey=$email");
+            exit;
     }
+
+} catch (Exception $e){
+    header("Location: checkjoin.php?id=$idclass&aleart=fail&emailkey=$email");
+    exit;
 }
 
 ?>

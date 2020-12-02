@@ -61,7 +61,7 @@ if (!isset($_SESSION["username"])) {
 			<div class="card bg-gradient-light border-0">	
 			<form class="form-inline my-2 my-lg-0" action="sendemailrequest.php" method="get">
 				<input type="hidden" name="id" value="<?php echo $idclass ?>"/>
-				<input class="form-control mr-sm-2" type="email" placeholder="Email" name="emailkey" aria-label="Email" value="<?php echo isset($_GET['emailkey'])? $_GET['searchkey'] : '' ?>">
+				<input class="form-control mr-sm-2" type="email" placeholder="Email" name="emailkey" aria-label="Email" value="<?php echo isset($_GET['emailkey'])? $_GET['emailkey'] : '' ?>">
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Request</button>
 			</form>			
 			</div>
