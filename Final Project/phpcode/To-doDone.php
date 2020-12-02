@@ -11,14 +11,18 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="shorcut icon" href="uploads/earth.jpg" type="image/jpg">	
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 <body>
 	<div class="card-group">
-			<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+			<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none;width:19%;" id="mySidebar">
 				<button onclick="w3_close()" class="w3-bar-item w3-large" style="font-size:20px;font-weight:bold;">☰</button>
-				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">A</a>
-				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">B</a>
-				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">C</a>
+				<a href="Homepage.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;padding-left:10px;border-bottom:1px solid black;"><i class='fas fa-house-user' style="font-size:35px;padding-right:10px;"></i>Classes</a>
+				<a href="To-doAssigned.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;"><i class='far fa-file-alt' style="font-size:35px;padding-right:17px;"></i>To-do</a>
 			</div>
 			
 			<div class="w3-white">

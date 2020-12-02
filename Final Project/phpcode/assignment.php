@@ -86,11 +86,11 @@
 			</div>
 			
 			<div class="card bg-gradient-light text-center border-0 align-middle" style="padding:5px 0px 0px 0px;">	
-				<a href="assignment.php?id=<?php echo ($idclass );?>" style="padđing-top:20px;"><h3>Classwork</h3></a>
+				<a href="assignment.php?id=<?php echo ($idclass );?>" style="padđing-top:20px;color:red;"><h3>Classwork</h3></a>
 			</div>
 			
 			<div class="card bg-gradient-light text-left border-0 align-middle" style="padding:5px 0px 0px 0px;">	
-				<a href="people.php?id=<?php echo ($idclass );?>" style="padđing-top:20px;color:red;"><h3>People</h3></a>
+				<a href="people.php?id=<?php echo ($idclass );?>" style="padđing-top:20px;"><h3>People</h3></a>
 			</div>
 			
 			<div class="card bg-gradient-light border-0">			
@@ -123,92 +123,92 @@
 	</div> 
 	
 	<br></br>
-	
-	<div class="card-group bg-white">
-		<div class="card border-0">
-		</div>
-		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
-			<h3> Teachers </h3>
-		</div>
-	
-		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
-		</div>
-		<div class="card border-0">
-		</div>
-	</div>
-	<?php
-	$sql ="SELECT P.name FROM profile P, Account A
-			WHERE A.id in (SELECT id_account FROM joining WHERE id_class = '$idclass')
-			AND A.id in (SELECT id FROM account WHERE role = 'teacher')
-			AND P.id = A.id_profile";
-	$result = $conn -> query($sql);
-	while($row = $result->fetch_assoc()) {
-	?>
-	
-	<div class="card-group bg-white">
-		<div class="card border-0">
-		</div> 	
-		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
-			<h3> <?php echo ($row['name']);?> </h3>
-		</div>
-	<?php
-	}
-	?>
-		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
-		</div>
-		<div class="card border-0">
-		</div>
-	</div>
-	
 	<br></br>
-	<br></br>
-		
-	<div class="card-group bg-white border-0">
-		<div class="card border-0">
-		</div>
-		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
-			<h3> Classmates </h3>
-		</div>
-	<?php
-	$sql ="SELECT P.name, A.id FROM profile P, Account A
-			WHERE A.id in (SELECT id_account FROM joining WHERE id_class = '$idclass')
-			AND A.id in (SELECT id FROM account WHERE role = 'student')
-			AND A.id_profile = P.id";
-	$result = $conn -> query($sql);
-	?>
 	
-		<div class="card text-right" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
-			<h3> <?php echo $result->num_rows ?> students </h3>
+	<div class="card-group">
+	
+	<div class="card bg-white" style="border:0px solid black;">
+	</div>
+	
+	<div class="card" style="border:1px solid black;">
+		<div class="card-header bg-white">
+			<table>
+				<td>
+				</td>
+										
+				<td>
+					<img src=<?php echo($row["avatar"]); ?> class="rounded-circle z-depth-0" alt="avatar image" height="65" width="65">
+				</td>
+										
+				<td>
+					<h6 style="margin-left:10px;"> teacher name</h6>
+					<h6 style="margin-left:10px;"> time</h6>
+				</td>
+										
+				<td>
+					<a  href="#" class="btn bg-white w3-display-topright" style="border:0px solid white;"><i class='far fa-times-circle' style="font-size:30px;"></i></a>
+				</td>
+			</table>
+									
+			<div class="card">
+				<h6> status here </h6>
+				<h6> file here </h6>
+			</div>
 		</div>
-		<div class="card border-0">
+								
+		<div class="card-body bg-white" style="border:0px solid black;">
+			<h3 style="margin-left:15px;"> number of class comment </h3>
+				<table style="border:0px solid black;">
+					<td>
+						<img src=<?php echo($row["avatar"]); ?> class="rounded-circle z-depth-0" alt="avatar image" height="65" width="65">
+					</td>
+										
+					<td>
+						<h6 style="margin-left:10px;"> student name <span> time </span></h6>
+						<h6 style="margin-left:10px;"> comment</h6>
+					</td>
+										
+					<td>
+					</td>
+										
+					<td>
+					</td>
+				</table>
+		</div>
+								
+		<div class="card-footer bg-white">
+			<table style="border:0px solid black;">
+				<td>
+					<img src=<?php echo($row["avatar"]); ?> class="rounded-circle z-depth-0" alt="avatar image" height="65" width="65">
+						<!-- avatar student here -->
+				</td>
+									
+				<td colspan="3">
+					<textarea class="form-control" rows="2" name="comment" style="width:355px;margin-left:10px;"></textarea> 
+				</td>
+										
+				<td>
+				</td>
+										
+				<td>
+					<button style="border:0px solid white;" class="bg-white" type="submit"><i class='far fa-paper-plane' style="font-size:30px;margin-left:0px;"></i></button>
+				</td>				
+			</table>	
+			<p></p>
+			<div class="mb-3">
+				<div class="input-group">
+					<input type="file" id="fileToUpload" name="fileToUpload" required>
+				</div>
+			</div>
 		</div>
 	</div>
-	<?php
-	while($row = $result->fetch_assoc()) {
-	?>
-	<div class="card-group bg-white">
 	
-		<div class="card border-0">
-		</div>
-		
-		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
-			<h3> <?php echo ($row["name"]);?> </h3>
-		</div>
+	<div class="card bg-white" style="border:0px solid black;">
+	</div>
 	
-		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
-			<a  href="deletejoining.php?idaccount=<?php echo ($row["id"]) ?>&id=<?php echo($_GET['id'])?>" class="btn bg-black w3-display-right" style="border:0px solid white;"><i class='far fa-times-circle' style="font-size:30px;"></i></a>
-		</div>
-		<div class="card border-0">
-		</div>
+	</div>
+	
 </body>
-</html>
-	</div><?php
-	}
-	?>
-	<?php
-	require "aleart.php";
-	?>
-</body>
-		
+</html>	
 	
 	
