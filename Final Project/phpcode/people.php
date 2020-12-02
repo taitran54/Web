@@ -96,9 +96,18 @@
 			<div class="card bg-gradient-light border-0">			
 			</div>
 			
+			<?php
+				$nameuser = $_SESSION["username"];
+				require "connection.php";
+				$sql = "SELECT P.image as avatar FROM profile P 
+					WHERE P.id in (SELECT id FROM account WHERE username = '$nameuser')";
+				$result = $conn -> query($sql);
+				$row = $result -> fetch_assoc();
+			?>
+			
 			<div class="card text-right border-0" style="padding:15px 20px 0px 0px;">
 				<a class="p-0" href="#">
-                    <img src="uploads/brb.jpg" class="rounded-circle z-depth-0" alt="avatar image" height="35">
+                    <img src="<?php echo($row["avatar"]); ?>" class="rounded-circle z-depth-0" alt="avatar image" height="35">
                 </a>
 			</div>
 			
@@ -183,6 +192,7 @@
 	}
 	?>
 		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
+			<a  href="#" class="btn bg-black w3-display-right" style="border:0px solid white;"><i class='far fa-times-circle' style="font-size:30px;"></i></a>
 		</div>
 		<div class="card border-0">
 		</div>

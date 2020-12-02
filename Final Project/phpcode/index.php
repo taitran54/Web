@@ -132,16 +132,16 @@
 	
 			<?php
 				require "connection.php";
-				$sql ="SELECT C.name, C.image FROM Class C WHERE C.id = '$idclass'";
-				$result = $conn -> query($sql);
-				$row = $result -> fetch_assoc();
+				$sql1 ="SELECT C.name, C.image FROM Class C WHERE C.id = '$idclass'";
+				$result1 = $conn -> query($sql1);
+				$row1 = $result1 -> fetch_assoc();
 			?>
 	
 	<div class="card border-0">			
 
 			<div class="card-body">
-				<div class="container" style="height:225px;width:65%;background-image:url(<?php echo($row["image"]); ?>); background-size:cover;">
-					<h1 style="text-align:top; padding:10px 0px 0px 10px; color:white; font-weight:white;"> <?php echo ($row["name"]); ?> </h1>
+				<div class="container" style="height:225px;width:65%;background-image:url(<?php echo($row1["image"]); ?>); background-size:cover;">
+					<h1 style="text-align:top; padding:10px 0px 0px 10px; color:white; font-weight:white;"> <?php echo ($row1["name"]); ?> </h1>
 				</div>
 			</div>
 
@@ -155,7 +155,7 @@
 						<td style="border:1px solid black;width:25%;padding-left:20px;">
 							<h6>Upcoming</h6> 
 							<h6>Woohoo, no work due soon!</h6> 
-							<a href="#" style="padding-left:150px;"> View all</a> 
+							<a href="To-doAssigned" style="padding-left:150px;"> View all</a> 
 						</td>
 						
 						<td style="width:3%;">
@@ -190,8 +190,9 @@
 						<td style="width:3%;">
 						</td>
 						
+						<form>
 						<td style="border:0px solid black;padding:0px 0px 0px 0px; width:1150px;">
-							<div id="demo" class="w3-hide w3-bar-block w3-card w3-hide" style="width:700px;">
+							<div id="demo" class="w3-hide w3-bar-block w3-card w3-hide" style="width:695px;">
 								<form action="createstatus.php?id=<?php echo $idclass ?>" method="post" enctype="multipart/form-data">
 									<div class="card-header w3-bar-item">
 										<div class="form-group">
@@ -205,11 +206,79 @@
 									</div>
 								</form>
 							</div>
+							
 							<p></p>
-							<div class="container" style="border:1px solid black;">
-								something
+							<p></p>
+							
+							<div class="card" style="border:1px solid black;">
+								<div class="card-header bg-white">
+									<table>
+										<td>
+											<img src=<?php echo($row["avatar"]); ?> class="rounded-circle z-depth-0" alt="avatar image" height="65" width="65">
+										</td>
+										
+										<td>
+											<h6 style="margin-left:10px;"> teacher name</h6>
+											<h6 style="margin-left:10px;"> time</h6>
+										</td>
+										
+										<td>
+										</td>
+										
+										<td>
+											<a  href="#" class="btn bg-white" style="border:0px solid white;"><i class='far fa-times-circle' style="font-size:30px;margin-left:450px;"></i></a>
+										</td>
+									</table>
+									<div class="card">
+										<h6> status here </h6>
+										<h6> file here </h6>
+									</div>
+								</div>
+								
+								<div class="card-body">
+									<h3 style="margin-left:15px;"> number of class comment </h3>
+									<table style="border:0px solid black;">
+										<td>
+											<img src=<?php echo($row["avatar"]); ?> class="rounded-circle z-depth-0" alt="avatar image" height="65" width="65">
+										</td>
+										
+										<td>
+											<h6 style="margin-left:10px;"> student name <span> time </span></h6>
+											<h6 style="margin-left:10px;"> comment</h6>
+										</td>
+										
+										<td>
+										</td>
+										
+										<td>
+										</td>
+									</table>
+								
+								</div>
+								
+								<div class="card-footer bg-white">
+									<table style="border:0px solid black;">
+										<td>
+											<img src=<?php echo($row["avatar"]); ?> class="rounded-circle z-depth-0" alt="avatar image" height="65" width="65">
+											<!-- avatar student here -->
+										</td>
+									
+										<td colspan="3">
+											<textarea class="form-control" rows="2" name="comment" style="width:508px;margin-left:10px;"></textarea> 
+										</td>
+										
+										<td>
+										</td>
+										
+										<td>
+											<a  href="#" class="btn" style="border:0px solid white;" class="bg-white"><i class='far fa-paper-plane' style="font-size:30px;margin-left:10px;"></i></a>
+										</td>
+									</table>	
+								</div>
 							</div>
 						</td>
+						</form>
+						
 					</table>
 				</div>
 			</div>
@@ -225,7 +294,17 @@
 				echo '</script>';
 				}
 			?>
-			
+			<br></br>
+			<br></br>
+			<br></br>
+			<br></br>
+			<br></br>
+			<br></br>
+			<br></br>
+			<br></br>
+			<br></br>
+			<br></br>
+			<br></br>
 			<!--<div class="card-footer border-0" style="background-color:white;">
 				<div class="container" style="height:225px;width:67%;">
 					<table border=0>
