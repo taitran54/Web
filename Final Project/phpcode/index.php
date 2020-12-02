@@ -202,7 +202,7 @@
 						<td style="width:3%;">
 						</td>
 						
-						<form>
+						
 						<td style="border:0px solid black;padding:0px 0px 0px 0px; width:1150px;">
 							<div id="demo" class="w3-hide w3-bar-block w3-card w3-hide" style="width:695px;">
 								<form action="createstatus.php?id=<?php echo $idclass ?>" method="post" enctype="multipart/form-data">
@@ -221,17 +221,27 @@
 							
 							<p></p>
 							<p></p>
+							<?php
 							
+							$sql = "SELECT  P.name, S.date, S.description, S.id, P.image
+									FROM Status S, Class C, Profile P, Account A
+									WHERE 	P.id = A.id_profile
+										AND A.id = S.id_account
+										AND S.id_class = $idclass
+									ORDER BY S.date DESC";
+							$resultstatus = $conn -> query($sql);
+							while ($rowstatus = $resultstatus ->fetch_assoc()){
+							?>
 							<div class="card" style="border:1px solid black;">
 								<div class="card-header bg-white">
 									<table>
 										<td>
-											<img src=<?php echo($row["avatar"]); ?> class="rounded-circle z-depth-0" alt="avatar image" height="65" width="65">
+											<img src=<?php echo($rowstatus["image"]); ?> class="rounded-circle z-depth-0" alt="avatar image" height="65" width="65">
 										</td>
 										
 										<td>
-											<h6 style="margin-left:10px;"> teacher name</h6>
-											<h6 style="margin-left:10px;"> time</h6>
+											<h6 style="margin-left:10px;"> <?php echo ($rowstatus["name"]) ?></h6>
+											<h6 style="margin-left:10px;"> <?php echo ($rowstatus["date"]) ?></h6>
 										</td>
 										
 										<td>
@@ -243,14 +253,16 @@
 										<td>
 											<a  href="#" class="btn bg-white" style="border:0px solid white;"><i class='far fa-times-circle' style="font-size:30px;margin-left:450px;"></i></a>
 										</td>
-										<?php } ?>
+										<?php 
+										} 
+										?>
 									</table>
 									<div class="card">
-										<h6> status here </h6>
-										<h6> file here </h6>
+										<h6><?php echo ($rowstatus["description"]) ?> </h6>
+										<!-- <h6> file here </h6> -->
 									</div>
 								</div>
-								
+							
 								<div class="card-body">
 									<h3 style="margin-left:15px;"> number of class comment </h3>
 									<table style="border:0px solid black;">
@@ -292,23 +304,17 @@
 									</table>	
 								</div>
 							</div>
+							<?php 
+							} 
+							?>
 						</td>
-						</form>
+						
 						
 					</table>
 				</div>
 			</div>
 			<?php
-				if (isset($_GET["aleart"])){
-				echo '<script language="javascript">';
-				if ($_GET["aleart"]=="success"){
-					echo 'alert("Succes")';
-				}
-				else if ($_GET["aleart"]=="fail"){
-					echo 'alert("Fail")';
-				}
-				echo '</script>';
-				}
+				require "aleart.php";
 			?>
 			<br></br>
 			<br></br>

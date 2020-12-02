@@ -1,3 +1,4 @@
 <?php 
-    header("Location: classdelete.php?id=2");
+    echo ("Hi");
+    // header("Location: classdelete.php?id=2");
 ?>

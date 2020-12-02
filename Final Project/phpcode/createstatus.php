@@ -19,13 +19,14 @@ if (!$stm -> execute()){
     header ("Location: index.php?aleart=fail&id=$idclass");
     exit;
 }
-echo (var_dump($_FILES));
+
 if (!($_FILES['fileToUpload']['size'] == 0 && $_FILES['fileToUpload']['error'] == 0)){
     $target_dir = "uploads/submit/";
     $target_file = $target_dir . $_FILES["fileToUpload"]["name"];
     
     if (!move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        die("Sorry, there was an error uploading your file.");
+        header ("Location: index.php?aleart=success&id=$idclass");
+        exit;
     } else {
         $sql = "SELECT S.id FROM Status S WHERE S.date = '$date' AND S.id_account = $idaccount";
         echo ($sql);

@@ -49,7 +49,7 @@ create table if not exists `Joining` (
 create table if not exists `Status` (
 	`id` int (11) not null auto_increment,
     `date` datetime not null,
-    `description` nvarchar (255),
+    `description` text,
     `id_class` int (11) not null,
     `id_account` int (11) not null,
     primary key (`id`),
