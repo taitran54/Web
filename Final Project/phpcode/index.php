@@ -89,7 +89,7 @@
 				$row = $result -> fetch_assoc();
 			?>
 			<div class="card text-right border-0" style="padding:15px 20px 0px 0px;">
-				<a class="p-0" href="register.php?edit=yes">
+				<a class="p-0" href="register.php">
                     <img src="<?php echo($row["avatar"]); ?>" class="rounded-circle z-depth-0" alt="avatar image" height="35">
                 </a>
 			</div>
@@ -220,7 +220,7 @@
 											WHERE C.id_account = A.id
 												AND A.id_profile = P.id
 												AND C.id_status = $idstatus
-											ORDER BY C.date ASC ";
+											ORDER BY C.date DESC ";
 									$resultcomment = $conn ->query ($sql);
 								?>
 								<div class="card-body">

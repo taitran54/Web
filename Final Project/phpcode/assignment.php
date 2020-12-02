@@ -26,14 +26,10 @@
 	require "function.php";
 	$idclass = $_GET['id'];
 	require "connection.php";
-<<<<<<< HEAD
 	$username = $_SESSION["username"];
 	$sql=" SELECT name FROM class";
 	$result = $conn -> query($sql);
 	$row = $result -> fetch_assoc();
-=======
-	require 'function.php';
->>>>>>> c61906a3b5542ab10791ef92d46e1ca841aed58e
 ?>
 <body>
 	<div class="card-group" style="border-bottom:1px solid black;">
@@ -83,7 +79,7 @@
 			?>
 			
 			<div class="card text-right border-0" style="padding:15px 20px 0px 0px;">
-				<a class="p-0" href="register.php?edit=yes">
+				<a class="p-0" href="#">
                     <img src="<?php echo($row["avatar"]); ?>" class="rounded-circle z-depth-0" alt="avatar image" height="35">
                 </a>
 			</div>
