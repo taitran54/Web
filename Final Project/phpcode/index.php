@@ -58,9 +58,8 @@
 </head>
 <?php
 	$idclass = $_GET['id'];
-
 	require "connection.php";
-	$sql ="SELECT C.name, C.image FROM Class C WHERE C.id = $idclass";
+	$sql ="SELECT C.name, C.image FROM Class C WHERE C.id = '$idclass'";
 	$result = $conn -> query($sql);
 	$row = $result -> fetch_assoc();
 ?>
@@ -68,10 +67,9 @@
 	<div class="card-group">
 			<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none;width:19%;" id="mySidebar">
 				<button onclick="w3_close()" class="w3-bar-item w3-large" style="font-size:20px;font-weight:bold;">☰</button>
-				<a href="checkjoin.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;border-bottom:1px solid black;"><i class='fas fa-portrait' style="font-size:35px;padding-right:10px;"></i>Check join</a>
+				<a href="Homepage.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold; padding-left:10px"><i class='fas fa-house-user' style="font-size:35px;padding-right:10px;"></i>Classes</a>
+				<a href="checkjoin.php?id=<?php echo ($idclass );?>" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;border-bottom:1px solid black;"><i class='fas fa-portrait' style="font-size:35px;padding-right:17px;"></i>Request Join</a>
 				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">A</a>
-				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">B</a>
-				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">C</a>
 			</div>
 			
 			<div class="w3-white">
@@ -86,24 +84,24 @@
 			</div>
 			
 			<div class="card bg-gradient-light border-0 align-middle text-right" style="padding:5px 0px 0px 0px;">	
-				<a href="index.php?id=<?php echo ($idclass );?>"" style="padđing-top:20px;color:red;"><h3>Stream</h3></a>
+				<a href="index.php?id=<?php echo ($idclass );?>" style="padđing-top:20px;color:red;"><h3>Stream</h3></a>
 			</div>
 			
 			<div class="card bg-gradient-light text-center border-0 align-middle" style="padding:5px 0px 0px 0px;">	
-				<a href="assignment.php?id=<?php echo ($idclass );?>"" style="padđing-top:20px;"><h3>Classwork</h3></a>
+				<a href="assignment.php?id=<?php echo ($idclass );?>" style="padđing-top:20px;"><h3>Classwork</h3></a>
 			</div>
 			
 			<div class="card bg-gradient-light text-left border-0 align-middle" style="padding:5px 0px 0px 0px;">	
-				<a href="peopleinclass.php?id=<?php echo ($idclass );?>"" style="padđing-top:20px;"><h3>People</h3></a>
+				<a href="people.php?id=<?php echo ($idclass );?>" style="padđing-top:20px;"><h3>People</h3></a>
 			</div>
 			<?php 
 				session_start();
 				require "function.php";
 				if (canTeach($_SESSION["username"])){
 			?>
-			<div class="card bg-gradient-light text-left border-0 align-middle" style="padding:5px 0px 0px 0px;">	
-				<a href="checkjoin.php?id=<?php echo ($idclass );?>"" style="padđing-top:20px;"><h3>Reques Join</h3></a>
-			</div>
+			<!--<div class="card bg-gradient-light text-left border-0 align-middle" style="padding:5px 0px 0px 0px;">	
+				<a href="checkjoin.php?id=<?php echo ($idclass );?>" style="padđing-top:20px;"><h3>Reques Join</h3></a>
+			</div>-->
 			<?php	
 				}
 			?>
