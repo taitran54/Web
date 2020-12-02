@@ -15,7 +15,7 @@
 		<div class="w3-white">
 			<button class="w3-button w3-white w3-xlarge" onclick="w3_open()">☰</button>
 		</div>
-		<script>
+		<!--<script>
 			function w3_open() {
 				document.getElementById("mySidebar").style.display = "block";
 			}
@@ -23,6 +23,6 @@
 			function w3_close() {
 				document.getElementById("mySidebar").style.display = "none";
 			}
-		</script>
+		</script>-->
     </body>
 </html>

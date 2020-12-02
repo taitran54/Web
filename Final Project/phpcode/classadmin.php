@@ -19,58 +19,25 @@ if (!isset($_SESSION["username"])) {
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">	
+	<script type="text/javascript" src="main.js"></script>
 </head>
+
 <body>
-
-<style>
-    table{
-		padding-top: 50px;
-        text-align: center;
-    }
-    td{
-        padding: 10px;
-    }
-    tr.item{
-        border-top: 1px solid #5e5e5e;
-        border-bottom: 1px solid #5e5e5e;
-    }
-
-    tr.item:hover{
-        background-color: #d9edf7;
-    }
-
-    tr.item td{
-        min-width: 150px;
-    }
-
-    tr.header{
-        font-weight: bold;
-    }
-
-    a{
-        text-decoration: none;
-    }
-    a:hover{
-        color: deeppink;
-        font-weight: bold;
-    }
-</style>
-	
 
 <?php
 	include 'sidebar.php';
 ?>
 	
-<table cellpadding="10" cellspacing="10" border="0" style="border-collapse: collapse; margin: auto" width=100%>
+<table class="list" cellpadding="10" cellspacing="10" border="0" style="border-collapse: collapse; margin: auto; padding-top: 50px; text-align: center;" width=100%>
 	
-    <tr class="header" style="font-size:20px;">
-        <td>Teacher username</td>
-        <td>Subject</td>
-        <td>Avatar</td>
-		<td>Date create</td>
-		<td>Code</td>
-        <td>Action</td>
+    <tr class="header" style="font-size:20px;font-weight: bold;">
+        <td style="padding: 10px;">Teacher username</td>
+        <td style="padding: 10px;">Subject</td>
+        <td style="padding: 10px;">Avatar</td>
+		<td style="padding: 10px;">Date create</td>
+		<td style="padding: 10px;">Code</td>
+        <td style="padding: 10px;">Action</td>
     </tr>
 	<?php
 	require "connection.php";
@@ -80,13 +47,14 @@ if (!isset($_SESSION["username"])) {
 	
 	while($row = $result->fetch_assoc()) {
 	?>
-    <tr class="item">
-		<td><?php echo $row["username"] ?></td>
-		<td><?php echo $row["name"] ?></td>
-		<td><img src="<?php echo $row["image"] ?>" style="max-height: 80px"></td>
-		<td><?php echo $row["date"] ?></td>
-		<td><?php echo $row["code"] ?></td>
-        <td><a href="classform.php?id=<?php echo $row["id"] ?>">Update</a> | <a href="classdelete.php?id=<?php echo $row["id"] ?>" class="delete">Delete</a></td>
+    <tr class="item" style="border-top: 1px solid #5e5e5e;border-bottom: 1px solid #5e5e5e;min-width: 150px;">
+		<td style="padding: 10px;"><?php echo $row["username"] ?></td>
+		<td style="padding: 10px;"><?php echo $row["name"] ?></td>
+		<td style="padding: 10px;"><img src="<?php echo $row["image"] ?>" style="max-height: 80px"></td>
+		<td style="padding: 10px;"><?php echo $row["date"] ?></td>
+		<td style="padding: 10px;"><?php echo $row["code"] ?></td>
+        <td style="padding: 10px;"><a href="classform.php?id=<?php echo $row["id"] ?>" style="text-decoration: none;font-weight: bold;">Update</a> 
+		| <a href="classdelete.php?id=<?php echo $row["id"] ?>" class="delete" style="text-decoration: none;font-weight: bold;">Delete</a></td>
     </tr>
 	<?php 
 	}
