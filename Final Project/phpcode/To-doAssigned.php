@@ -45,9 +45,8 @@
 							All classes <i class="fa fa-caret-down"></i>
 						</button>
 					<div id="demo" class="w3-dropdown-content w3-bar-block w3-card" style="width:211px;">
-						<a href="#" class="w3-bar-item w3-button">Link 1</a>
-						<a href="#" class="w3-bar-item w3-button">Link 2</a>
-						<a href="#" class="w3-bar-item w3-button">Link 3</a>
+						<a href="#" class="w3-bar-item w3-button">Link</a>
+						<a href="#" class="w3-bar-item w3-button">Link</a>
 					</div>
 					</div>
 								
