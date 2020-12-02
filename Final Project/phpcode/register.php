@@ -43,7 +43,7 @@
     $phone = "";
     $title = "Registor";
     $buttonTitle = "Sign up";
-    
+    session_start();
     if (isset($_SESSION["username"])){
         require "connection.php";
         $username = $_SESSION["username"];

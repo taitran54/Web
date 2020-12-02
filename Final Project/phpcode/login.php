@@ -48,6 +48,18 @@
                 <a href="lostpassword.php" style="font-size:16px;">Lost your password?</a></br>	
                 <a href="register.php" style="font-size:16px;">Don't have an account?</a>
             </form>      
+            <?php
+		if (isset($_GET["aleart"])){
+		echo '<script language="javascript">';
+		if ($_GET["aleart"]=="success"){
+			echo 'alert("Succes")';
+		}
+		else if ($_GET["aleart"]=="fail"){
+			echo 'alert("Fail")';
+		}
+		echo '</script>';
+		}
+	?>
         </div>
     </main>
 </body>

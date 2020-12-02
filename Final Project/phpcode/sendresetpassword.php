@@ -2,12 +2,12 @@
 // This file using for insert email and token into database and send resetpassword email with link to user's email
 //     function added:
 try {
-    if (isset($_GET['email'])){
+    if (isset($_POST['email'])){
         //check already email and token in resetpass table
         require "function.php";
         require "connection.php";
         $token  = randomString (32); //Create random token
-        $email = $_GET['email'];  //MUST change to POST
+        $email = $_POST['email'];  //MUST change to POST
         $sql = "SELECT P.id FROM Profile P WHERE P.email = ?";
         
         $stm = $conn -> prepare($sql);
@@ -25,7 +25,6 @@ try {
                 $stm = $conn -> prepare($sql);
                 $stm -> bind_param('s', $email);
                 $stm ->execute();
-                echo ("Here");
                 $sql = "INSERT INTO Resetpass (email, token) 
                         VALUES (?, ?)";
                 $stm = $conn -> prepare($sql);
@@ -33,19 +32,24 @@ try {
                 $stm ->execute();
                 $stm -> close();
                 $conn -> close();
-            }
-            else {
-                header("Location: #");
+                header("Location: lostpassword.php?aleart=success");
                 exit;
             }
-            echo ("Success");
+            else {
+                header("Location: lostpassword.php?aleart=fail");
+                exit;
+            }
         } else {
+            header("Location: lostpassword.php?aleart=fail");
+            exit;
             echo (var_dump($bool));
             echo ("Fail");
         }
     }
 } catch (Exception $e) {
     echo 'Caught exception: ',  $e->getMessage(), "\n";
+    header("Location: lostpassword.php?aleart=fail");
+    exit;
 }
 
 ?>

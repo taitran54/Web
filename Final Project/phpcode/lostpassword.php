@@ -13,12 +13,30 @@
 	<script type="text/javascript" src="main.js"></script>
 </head>
 <body>
+	<?php 
+		$check = 0;
+		if (isset($_GET["aleart"])){
+			if ($_GET["aleart"]=="success"){
+				$message = "Send email success";
+				$check = 1;
+			}
+			else {
+				$message = "Your email is invalid";
+			}
+		}
+		else {
+			$message = "";
+		}
+	?>
     <main>
-        <form name="myLostPassForm" method="post" onsubmit="return validateLostPassForm()" >
+        <form name="myLostPassForm" action="sendresetpassword.php" method="post" onsubmit="return validateLostPassForm()" >
             <div class="forgotpassword" >
-            <img src="uploads/brb.jpg" class="avatar">
+            <img src="uploads/avatar/avatar.png" class="avatar">
 				<h1>Forget password <i class='fas fa-question'></i></h1>
 				<br></br>
+				<?php 
+				if ($check == 0){
+				?>
                 <div>
                     <p class="label label-default" style="font-size:20px;"><i class='far fa-envelope-open' style='font-size:19px'></i> Email</p>
 
@@ -26,9 +44,11 @@
                                         
                     <input type="submit" class="submit" name="submit" onclick="" value="Send Request">                    
                 </div>
-            
+				<?php 
+				}
+				?>
 				<div>
-					<br><p style="color:red;">A</p></br>
+					<br><p style="color:red;"><?php echo ($message); ?></p></br>
 				</div>
 				<br></br>
 				
