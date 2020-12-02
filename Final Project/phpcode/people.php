@@ -130,18 +130,20 @@
 		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
 			<h3> Teachers </h3>
 		</div>
-	<?php
-	$sql ="SELECT P.name FROM profile P
-			WHERE P.id in (SELECT id_account FROM joining WHERE id_class = '$idclass')
-			AND P.id in (SELECT id FROM account WHERE role = 'teacher')";
-	$result = $conn -> query($sql);
-	while($row = $result->fetch_assoc()) {
-	?>
+	
 		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
 		</div>
 		<div class="card border-0">
 		</div>
 	</div>
+	<?php
+	$sql ="SELECT P.name FROM profile P, Account A
+			WHERE A.id in (SELECT id_account FROM joining WHERE id_class = '$idclass')
+			AND A.id in (SELECT id FROM account WHERE role = 'teacher')
+			AND P.id = A.id_profile";
+	$result = $conn -> query($sql);
+	while($row = $result->fetch_assoc()) {
+	?>
 	
 	<div class="card-group bg-white">
 		<div class="card border-0">
@@ -168,35 +170,44 @@
 			<h3> Classmates </h3>
 		</div>
 	<?php
-	$sql ="SELECT P.name FROM profile P
-			WHERE P.id in (SELECT id_account FROM joining WHERE id_class = '$idclass')
-			AND P.id in (SELECT id FROM account WHERE role = 'student')";
+	$sql ="SELECT P.name, A.id FROM profile P, Account A
+			WHERE A.id in (SELECT id_account FROM joining WHERE id_class = '$idclass')
+			AND A.id in (SELECT id FROM account WHERE role = 'student')
+			AND A.id_profile = P.id";
 	$result = $conn -> query($sql);
-	
-	while($row = $result->fetch_assoc()) {
 	?>
+	
 		<div class="card text-right" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
 			<h3> <?php echo $result->num_rows ?> students </h3>
 		</div>
 		<div class="card border-0">
 		</div>
 	</div>
-	
+	<?php
+	while($row = $result->fetch_assoc()) {
+	?>
 	<div class="card-group bg-white">
+	
 		<div class="card border-0">
 		</div>
+		
 		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
 			<h3> <?php echo ($row["name"]);?> </h3>
 		</div>
-	<?php
-	}
-	?>
+	
 		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
-			<a  href="#" class="btn bg-black w3-display-right" style="border:0px solid white;"><i class='far fa-times-circle' style="font-size:30px;"></i></a>
+			<a  href="deletejoining.php?idaccount=<?php echo ($row["id"]) ?>&id=<?php echo($_GET['id'])?>" class="btn bg-black w3-display-right" style="border:0px solid white;"><i class='far fa-times-circle' style="font-size:30px;"></i></a>
 		</div>
 		<div class="card border-0">
 		</div>
-	</div>
+		
+	</div><?php
+	}
+	?>
+	<?php
+	require "aleart.php";
+	?>
+</body>
 		
 	
 	

@@ -48,7 +48,7 @@
         require "connection.php";
         $username = $_SESSION["username"];
         $sql = "SELECT A.id, A.password, A.role, P.name, P.email, P.address, P.birth, P.phone 
-            FROM Account A, Profile P WHERE A.id_profile = P.id AND A.username=".$username;
+            FROM Account A, Profile P WHERE A.id_profile = P.id AND A.username='$username'";
         $result =$conn->query ($sql);
         $row = $result ->fetch_assoc();  
         

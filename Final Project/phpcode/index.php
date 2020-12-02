@@ -57,6 +57,8 @@
 </style>
 </head>
 <?php
+	session_start();
+	require "function.php";
 	$idclass = $_GET['id'];
 ?>
 <body>
@@ -64,8 +66,10 @@
 			<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none;width:19%;" id="mySidebar">
 				<button onclick="w3_close()" class="w3-bar-item w3-large" style="font-size:20px;font-weight:bold;">☰</button>
 				<a href="Homepage.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold; padding-left:10px"><i class='fas fa-house-user' style="font-size:35px;padding-right:10px;"></i>Classes</a>
+				<?php if (canTeach($_SESSION["username"])){?>
 				<a href="checkjoin.php?id=<?php echo ($idclass );?>" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;border-bottom:1px solid black;"><i class='fas fa-portrait' style="font-size:35px;padding-right:17px;"></i>Request Join</a>
-				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">A</a>
+				<?php }?>
+				<a href="logout.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">Logout</a>
 			</div>
 			
 			<div class="w3-white">
@@ -91,8 +95,7 @@
 				<a href="people.php?id=<?php echo ($idclass );?>" style="padđing-top:20px;"><h3>People</h3></a>
 			</div>
 			<?php 
-				session_start();
-				require "function.php";
+				
 				if (canTeach($_SESSION["username"])){
 			?>
 			<!--<div class="card bg-gradient-light text-left border-0 align-middle" style="padding:5px 0px 0px 0px;">	
@@ -114,8 +117,8 @@
 				$row = $result -> fetch_assoc();
 			?>
 			<div class="card text-right border-0" style="padding:15px 20px 0px 0px;">
-				<a class="p-0" href="#">
-                    <img src=<?php echo($row["avatar"]); ?> class="rounded-circle z-depth-0" alt="avatar image" height="35">
+				<a class="p-0" href="register.php">
+                    <img src="<?php echo($row["avatar"]); ?>" class="rounded-circle z-depth-0" alt="avatar image" height="35">
                 </a>
 			</div>
 			
@@ -132,7 +135,7 @@
 	
 			<?php
 				require "connection.php";
-				$sql1 ="SELECT C.name, C.image FROM Class C WHERE C.id = '$idclass'";
+				$sql1 ="SELECT C.name, C.image, C.code FROM Class C WHERE C.id = '$idclass'";
 				$result1 = $conn -> query($sql1);
 				$row1 = $result1 -> fetch_assoc();
 			?>
@@ -142,6 +145,15 @@
 			<div class="card-body">
 				<div class="container" style="height:225px;width:65%;background-image:url(<?php echo($row1["image"]); ?>); background-size:cover;">
 					<h1 style="text-align:top; padding:10px 0px 0px 10px; color:white; font-weight:white;"> <?php echo ($row1["name"]); ?> </h1>
+					<?php 
+						if (canTeach($_SESSION['username'])){
+					?>
+							<h2 style="text-align:top; padding:10px 0px 0px 10px; color:white; font-weight:white;">CODE:  <?php echo ($row1["code"]); ?> </h2>
+
+						<?php
+						}
+						?>
+					?>
 				</div>
 			</div>
 
@@ -224,10 +236,14 @@
 										
 										<td>
 										</td>
-										
+										<?php 
+										if(canTeach($_SESSION["username"]))
+										{
+										?>
 										<td>
 											<a  href="#" class="btn bg-white" style="border:0px solid white;"><i class='far fa-times-circle' style="font-size:30px;margin-left:450px;"></i></a>
 										</td>
+										<?php } ?>
 									</table>
 									<div class="card">
 										<h6> status here </h6>
