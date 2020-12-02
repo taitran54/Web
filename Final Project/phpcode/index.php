@@ -208,7 +208,7 @@
 								<form action="createstatus.php?id=<?php echo $idclass ?>" method="post" enctype="multipart/form-data">
 									<div class="card-header w3-bar-item">
 										<div class="form-group">
-											<textarea class="form-control" rows="5" id="comment" name="description" placeholder="Share with your class"></textarea>
+											<textarea class="form-control" rows="5" id="comment" name="description" placeholder="Share with your class" required></textarea>
 										</div>
 									</div>
 									<!-- <input type="submit"> -->
@@ -223,7 +223,7 @@
 							<p></p>
 							<?php
 							
-							$sql = "SELECT  P.name, S.date, S.description, S.id, P.image
+							$sql = "SELECT DISTINCT P.name, S.date, S.description, S.id, P.image
 									FROM Status S, Class C, Profile P, Account A
 									WHERE 	P.id = A.id_profile
 										AND A.id = S.id_account
@@ -251,7 +251,7 @@
 										{
 										?>
 										<td>
-											<a  href="#" class="btn bg-white" style="border:0px solid white;"><i class='far fa-times-circle' style="font-size:30px;margin-left:450px;"></i></a>
+											<a  href="deletestatus.php?id=<?php echo ($idclass) ?>&idstatus=<?php echo($rowstatus['id'])?>" class="btn bg-white" style="border:0px solid white;"><i class='far fa-times-circle' style="font-size:30px;margin-left:360px;"></i></a>
 										</td>
 										<?php 
 										} 
@@ -262,29 +262,55 @@
 										<!-- <h6> file here </h6> -->
 									</div>
 								</div>
-							
+								<?php 
+									$idstatus = $rowstatus['id'];
+									$sql = "SELECT DISTINCT P.name, C.description, C.date, C.id, P.image
+											FROM Comment C, Status S, Account A, Profile P
+											WHERE C.id_account = A.id
+												AND A.id_profile = P.id
+												AND C.id_status = $idstatus
+											ORDER BY C.date DESC ";
+									$resultcomment = $conn ->query ($sql);
+								?>
 								<div class="card-body">
-									<h3 style="margin-left:15px;"> number of class comment </h3>
+									<h6 style="margin-left:15px;"> number of class comment <?php echo $resultcomment->num_rows?></h6>
+									<?php
+											while ($rowcomment = $resultcomment ->fetch_assoc()){
+									?>
 									<table style="border:0px solid black;">
-										<td>
-											<img src=<?php echo($row["avatar"]); ?> class="rounded-circle z-depth-0" alt="avatar image" height="65" width="65">
-										</td>
+										
 										
 										<td>
-											<h6 style="margin-left:10px;"> student name <span> time </span></h6>
-											<h6 style="margin-left:10px;"> comment</h6>
+											<img src=<?php echo($rowcomment["image"]); ?> class="rounded-circle z-depth-0" alt="avatar image" height="65" width="65">
 										</td>
-										
+										<td>
+											<h6 style="margin-left:10px;"> <?php echo $rowcomment ["name"] ?> <span> <?php echo $rowcomment ["date"] ?> </span></h6>
+											<h6 style="margin-left:10px;"> <?php echo $rowcomment ["description"] ?></h6>
+										</td>
+										<?php
+										if(canTeach($_SESSION["username"]))
+										{
+										?>
+										<td>
+											<a  href="deletecomment.php?id=<?php echo ($idclass) ?>&idcomment=<?php echo($rowcomment['id'])?>" class="btn bg-white" style="border:0px solid white;"><i class='far fa-times-circle' style="font-size:30px;margin-left:300px;"></i></a>
+										<td>
+										<?php 
+										} 
+										?>
 										<td>
 										</td>
 										
 										<td>
 										</td>
 									</table>
+									<?php 
+									}
+									?>
 								
 								</div>
 								
 								<div class="card-footer bg-white">
+									<form action="createcomment.php" method="post">
 									<table style="border:0px solid black;">
 										<td>
 											<img src=<?php echo($row["avatar"]); ?> class="rounded-circle z-depth-0" alt="avatar image" height="65" width="65">
@@ -292,16 +318,19 @@
 										</td>
 									
 										<td colspan="3">
-											<textarea class="form-control" rows="2" name="comment" style="width:508px;margin-left:10px;"></textarea> 
+											<input type="hidden" name="idstatus" value ="<?php echo($rowstatus['id'])?>"/>
+											<input type="hidden" name="idclass" value ="<?php echo($idclass)?>"/>
+											<textarea class="form-control" rows="2" name="comment" style="width:508px;margin-left:10px;" required></textarea> 
 										</td>
 										
 										<td>
 										</td>
 										
 										<td>
-											<a  href="#" class="btn" style="border:0px solid white;" class="bg-white"><i class='far fa-paper-plane' style="font-size:30px;margin-left:10px;"></i></a>
+											<button  type="submit" class="btn" style="border:0px solid white;" class="bg-white"><i class='far fa-paper-plane' style="font-size:30px;margin-left:10px;"></i></button>
 										</td>
 									</table>	
+									</form>
 								</div>
 							</div>
 							<?php 
