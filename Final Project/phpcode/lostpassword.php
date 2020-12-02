@@ -40,7 +40,7 @@
                 <div>
                     <p class="label label-default" style="font-size:20px;"><i class='far fa-envelope-open' style='font-size:19px'></i> Email</p>
 
-                    <input type="email" class="email" name="email" placeholder="name@mail.com">
+                    <input type="email" class="email" name="email" placeholder="name@mail.com" style="color:black;">
                                         
                     <input type="submit" class="submit" name="submit" onclick="" value="Send Request">                    
                 </div>

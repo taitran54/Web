@@ -21,6 +21,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="shorcut icon" href="uploads/earth.jpg" type="image/jpg">	
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="main.js"></script>
 	
   </head>
   <?php

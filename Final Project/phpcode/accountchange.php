@@ -112,7 +112,7 @@
                     <div class="input-box">
                         <div class="col-6"  onsubmit="return checkForm()"  >
                             <label for="dateofbirth">Date Of Birth </label>
-                            <input type="date" name="dateofbirth" max="2020-12-01" min="1900-01-01" value = "<?php echo ($brith)?>">
+                            <input type="date" name="dateofbirth" max="2020-12-01" min="1900-01-01" value = "<?php echo ($brith)?>" style="width:170px;">
                         </div>
 
                         <div class="col-6">
