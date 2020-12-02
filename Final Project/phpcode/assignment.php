@@ -23,8 +23,13 @@
 </head>
 <?php
 	session_start();
+	require "function.php";
 	$idclass = $_GET['id'];
 	require "connection.php";
+	$username = $_SESSION["username"];
+	$sql=" SELECT name FROM class";
+	$result = $conn -> query($sql);
+	$row = $result -> fetch_assoc();
 ?>
 <body>
 	<div class="card-group" style="border-bottom:1px solid black;">
@@ -35,6 +40,7 @@
 				<a href="checkjoin.php?id=<?php echo ($idclass );?>" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;border-bottom:1px solid black;"><i class='fas fa-portrait' style="font-size:35px;padding-right:17px;"></i>Request Join</a>
 				<?php }?>
 				<a href="To-doAssigned.php?id=<?php echo ($idclass );?>" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;"><i class='far fa-file-alt' style="font-size:35px;padding-right:17px;"></i>To-do</a>
+				<a href="logout.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;"><i class='fas fa-door-open' style="font-size:35px;padding-right:10px;"></i>Logout</a>
 			</div>
 			
 			<div class="w3-white">
@@ -42,7 +48,7 @@
 			</div>
 			
 			<div class="card bg-gradient-light border-0">	
-				<h3> Class name </h3>
+				<h3> <?php echo ($row["name"]);?> </h3>
 			</div>
 				
 			<div class="card bg-gradient-light border-0">													
