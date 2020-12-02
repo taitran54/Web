@@ -67,7 +67,7 @@
 				<button onclick="w3_close()" class="w3-bar-item w3-large" style="font-size:20px;font-weight:bold;">☰</button>
 				<a href="Homepage.php" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold; padding-left:10px"><i class='fas fa-house-user' style="font-size:35px;padding-right:10px;"></i>Classes</a>
 				<a href="checkjoin.php?id=<?php echo ($idclass );?>" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;border-bottom:1px solid black;"><i class='fas fa-portrait' style="font-size:35px;padding-right:17px;"></i>Request Join</a>
-				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">A</a>
+				<a href="To-doAssigned.php?id=<?php echo ($idclass );?>" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;"><i class='far fa-file-alt' style="font-size:35px;padding-right:17px;"></i>To-do</a>
 			</div>
 			
 			<div class="w3-white">
@@ -197,6 +197,7 @@
 		<div class="card border-0">
 		</div>
 	</div>
-		
+</body>
+</html>
 	
 	
