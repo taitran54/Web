@@ -58,10 +58,6 @@
 </head>
 <?php
 	$idclass = $_GET['id'];
-	require "connection.php";
-	$sql ="SELECT C.name, C.image FROM Class C WHERE C.id = '$idclass'";
-	$result = $conn -> query($sql);
-	$row = $result -> fetch_assoc();
 ?>
 <body>
 	<div class="card-group">
@@ -109,9 +105,17 @@
 			<div class="card bg-gradient-light border-0">			
 			</div>
 			
+			<?php
+				$nameuser = $_SESSION["username"];
+				require "connection.php";
+				$sql = "SELECT P.image as avatar FROM profile P 
+					WHERE P.id in (SELECT id FROM account WHERE username = '$nameuser')";
+				$result = $conn -> query($sql);
+				$row = $result -> fetch_assoc();
+			?>
 			<div class="card text-right border-0" style="padding:15px 20px 0px 0px;">
 				<a class="p-0" href="#">
-                    <img src="uploads/brb.jpg" class="rounded-circle z-depth-0" alt="avatar image" height="35">
+                    <img src=<?php echo($row["avatar"]); ?> class="rounded-circle z-depth-0" alt="avatar image" height="35">
                 </a>
 			</div>
 			
@@ -125,6 +129,13 @@
 			}
 			</script>
 	</div> 
+	
+			<?php
+				require "connection.php";
+				$sql ="SELECT C.name, C.image FROM Class C WHERE C.id = '$idclass'";
+				$result = $conn -> query($sql);
+				$row = $result -> fetch_assoc();
+			?>
 	
 	<div class="card border-0">			
 

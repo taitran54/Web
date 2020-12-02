@@ -161,7 +161,7 @@
 	<?php
 	$sql ="SELECT P.name FROM profile P
 			WHERE P.id in (SELECT id_account FROM joining WHERE id_class = '$idclass')
-			AND P.id in (SELECT id FROM account WHERE role = 'students')";
+			AND P.id in (SELECT id FROM account WHERE role = 'student')";
 	$result = $conn -> query($sql);
 	
 	while($row = $result->fetch_assoc()) {
