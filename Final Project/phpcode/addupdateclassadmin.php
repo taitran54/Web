@@ -7,8 +7,15 @@ $name = $_POST["classname"];
 $code = $_POST["code"];
 $date = getCurrentDateTime();
 if (!canTeach($_POST["teacherusername"])){
-	header("Location: classform.php?error=teacher");
-	exit;
+	if (empty($_POST["id"])){
+		header("Location: classform.php?error=teacher");
+		exit;
+	}
+	else {
+		$id = $_POST['id'];
+		header("Location: classform.php?error=teacher&id=$id");
+		exit;
+	}
 }
 $target_dir = "uploads/";
 $target_file = $target_dir . $_FILES["fileToUpload"]["name"];
