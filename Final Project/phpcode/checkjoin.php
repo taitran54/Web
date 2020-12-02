@@ -86,10 +86,16 @@ if (!isset($_SESSION["username"])) {
 				<h3> Class name </h3>
 			</div>
 				
-			<div class="card bg-gradient-light border-0">													
+			<div class="card bg-gradient-light border-0">
+															
 			</div>
 			
-			<div class="card bg-gradient-light border-0">			
+			<div class="card bg-gradient-light border-0">	
+			<form class="form-inline my-2 my-lg-0" action="sendemailrequest.php" method="get">
+				<input type="hidden" name="id" value="<?php echo $idclass ?>"/>
+				<input class="form-control mr-sm-2" type="email" placeholder="Email" name="emailkey" aria-label="Email" value="<?php echo isset($_GET['searchkey'])? $_GET['searchkey'] : '' ?>">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Request</button>
+			</form>			
 			</div>
 			
 			<div class="card text-right border-0" style="padding:15px 20px 0px 0px;">
@@ -144,21 +150,13 @@ if (!isset($_SESSION["username"])) {
 	}
 	?>
 
-	<?php
-		if (isset($_GET["aleart"])){
-		echo '<script language="javascript">';
-		if ($_GET["aleart"]=="success"){
-			echo 'alert("Succes")';
-		}
-		else if ($_GET["aleart"]=="fail"){
-			echo 'alert("Fail")';
-		}
-		echo '</script>';
-		}
+	<?php 
+		require "aleart.php";
 	?>
     <tr class="control" style="text-align: right; font-weight: bold; font-size: 17px">
         <td colspan="8">
             <p style="font-size:20px;">Number of students are waiting for acception: <?php echo $result->num_rows ?></p>
+			
         </td>
     </tr>
 </table>

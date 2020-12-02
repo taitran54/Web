@@ -269,7 +269,7 @@
 											WHERE C.id_account = A.id
 												AND A.id_profile = P.id
 												AND C.id_status = $idstatus
-											ORDER BY C.date DESC ";
+											ORDER BY C.date ASC ";
 									$resultcomment = $conn ->query ($sql);
 								?>
 								<div class="card-body">
