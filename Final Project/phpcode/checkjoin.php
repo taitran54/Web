@@ -27,23 +27,15 @@ if (!isset($_SESSION["username"])) {
 	<?php
 	$idclass = $_GET['id'];
 	require "connection.php";
-	require "function.php";
-	$idaccount= getId($_SESSION['username']);
-	
-	$sql = "SELECT P.image, A.id
-			FROM Profile P, Account A
-			WHERE P.id = A.id_profile
-			AND A.id = $idaccount";
-	$result = $conn ->query($sql);
-	$row = $result->fetch_assoc();
+	$sql=" SELECT name FROM class";
+	$result = $conn -> query($sql);
+	$row = $result -> fetch_assoc();
 	?>
 	<div class="card-group">
 			<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none;width:19%;" id="mySidebar">
 				<button onclick="w3_close()" class="w3-bar-item w3-large" style="font-size:20px;font-weight:bold;">☰</button>
 				<a href="index.php?id=<?php echo ($idclass );?>"  class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;border-bottom:1px solid black;"><i class='fas fa-chevron-circle-left' style="font-size:35px;padding-right:10px;"></i>Return class</a>
-				<!-- <a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">A</a>
-				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">B</a>
-				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;">C</a> -->
+				<a href="#" class="w3-bar-item w3-button" style="font-size:20px;font-weight:bold;"></a>
 			</div>
 			
 			<div class="w3-white">
@@ -51,24 +43,18 @@ if (!isset($_SESSION["username"])) {
 			</div>
 			
 			<div class="card bg-gradient-light border-0">	
-				<h3> Class name </h3>
+				<h3> <?php echo ($row["name"]);?> </h3>
 			</div>
 				
-			<div class="card bg-gradient-light border-0">
-															
+			<div class="card bg-gradient-light border-0">													
 			</div>
 			
-			<div class="card bg-gradient-light border-0">	
-			<form class="form-inline my-2 my-lg-0" action="sendemailrequest.php" method="get">
-				<input type="hidden" name="id" value="<?php echo $idclass ?>"/>
-				<input class="form-control mr-sm-2" type="email" placeholder="Email" name="emailkey" aria-label="Email" value="<?php echo isset($_GET['emailkey'])? $_GET['emailkey'] : '' ?>">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Request</button>
-			</form>			
+			<div class="card bg-gradient-light border-0">			
 			</div>
 			
 			<div class="card text-right border-0" style="padding:15px 20px 0px 0px;">
-				<a class="p-0" href="register.php?edit=yes">
-                    <img src="<?php echo $row['image']?>" class="rounded-circle z-depth-0" alt="avatar image" height="35">
+				<a class="p-0" href="#">
+                    <img src="uploads/brb.jpg" class="rounded-circle z-depth-0" alt="avatar image" height="35">
                 </a>
 			</div>
 			
@@ -83,7 +69,7 @@ if (!isset($_SESSION["username"])) {
 		<td style="padding: 10px;">Date create</td>
     </tr>
 	<?php
-	
+	require "connection.php";
 	
 	$id = $_GET['id'];
 	$sql = "SELECT A.id, A.username, P.name, P.image 
@@ -109,13 +95,21 @@ if (!isset($_SESSION["username"])) {
 	}
 	?>
 
-	<?php 
-		require "aleart.php";
+	<?php
+		if (isset($_GET["aleart"])){
+		echo '<script language="javascript">';
+		if ($_GET["aleart"]=="success"){
+			echo 'alert("Succes")';
+		}
+		else if ($_GET["aleart"]=="fail"){
+			echo 'alert("Fail")';
+		}
+		echo '</script>';
+		}
 	?>
     <tr class="control" style="text-align: right; font-weight: bold; font-size: 17px">
         <td colspan="8">
             <p style="font-size:20px;">Number of students are waiting for acception: <?php echo $result->num_rows ?></p>
-			
         </td>
     </tr>
 </table>

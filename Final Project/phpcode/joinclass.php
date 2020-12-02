@@ -78,8 +78,8 @@
 			<div class="card-footer border-0 bg-white">
 				<h6 class="form-text text-muted" style="padding-right:140px;font-size:18px;text-align:center;font-weight:bold;">To sign in with a class code</h6>
 				<ul>
-					<h6 class="form-text text-muted" style="padding-right:750px;text-align:center;"><li style="font-size:14px;margin-left:542px;">Use an authorized account</h6></li>
-					<h6 class="form-text text-muted" style="padding-left:94px;text-align:center;padding-right:476px;"><li style="font-size:14px;margin-left:447px;">Use a class code with 5-7 letters or numbers, and no spaces or symbols</h6></li>
+					<h6 class="form-text text-muted" style="padding-right:750px;text-align:center;"><li style="font-size:14px;margin-left:580px;">Use an authorized account</h6></li>
+					<h6 class="form-text text-muted" style="padding-left:94px;text-align:center;padding-right:525px;"><li style="font-size:14px;margin-left:485px;">Use a class code with 5-7 letters or numbers, and no spaces or symbols</h6></li>
 				</ul>
 				<h6 class="form-text text-muted" style="padding-left:92px;text-align:center;">If you have trouble joining the class, go to the <a href="https://support.google.com/edu/classroom/answer/6020297" style="color:blue;">Help Center article</a>
 			</div>

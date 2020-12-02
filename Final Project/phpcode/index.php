@@ -24,6 +24,7 @@
 <?php
 	session_start();
 	require "function.php";
+	$idclass = $_GET['id'];
 	require "connection.php";
 	$idclass = $_GET['id'];
 	$username = $_SESSION["username"];
@@ -88,7 +89,7 @@
 				$row = $result -> fetch_assoc();
 			?>
 			<div class="card text-right border-0" style="padding:15px 20px 0px 0px;">
-				<a class="p-0" href="register.php?edit=yes">
+				<a class="p-0" href="register.php">
                     <img src="<?php echo($row["avatar"]); ?>" class="rounded-circle z-depth-0" alt="avatar image" height="35">
                 </a>
 			</div>
@@ -138,19 +139,7 @@
 						<td style="border:1px solid black;padding:0px 20px 0px 20px; width:1150px;" onclick="myFunction()">
 							<h3><i class='far fa-comment-dots'> Share something with your class...</h3></i>
 						</td>						
-							<script>
-								function myFunction() {
-									var x = document.getElementById("demo");
-									if (x.className.indexOf("w3-show") == -1) {
-										x.className += " w3-show";
-										x.previousElementSibling.className += " w3-green";
-									} else { 
-										x.className = x.className.replace(" w3-show", "");
-										x.previousElementSibling.className = 
-										x.previousElementSibling.className.replace(" w3-green", "");
-									}
-								}
-							</script>							
+						
 					</table>
 				</div>
 			</div>
@@ -231,7 +220,7 @@
 											WHERE C.id_account = A.id
 												AND A.id_profile = P.id
 												AND C.id_status = $idstatus
-											ORDER BY C.date ASC ";
+											ORDER BY C.date DESC ";
 									$resultcomment = $conn ->query ($sql);
 								?>
 								<div class="card-body">
