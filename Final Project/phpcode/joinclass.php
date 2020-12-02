@@ -19,12 +19,12 @@
 	<form class="formjoinclass" name="formjoinclass" action = "processjoin.php" method="post" onsubmit="return validationJoinClassName()">
 		<div class="form-group">
 		<nav class="navbar navbar-expand-sm navbar-light bg-white" style="border-bottom:1px solid gray;">
-			<a class="navbar-brand" href="Homepage.php"><i class="glyphicon glyphicon-remove-circle w3-display-left" style="font-size:40px;padding-left:30px;"></i></a>
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
 					<p class="w3-display-left" style="padding-left:95px;font-size:23px;">Join class</p>
 				</li>           
 			</ul>
+				<button href="Homepage.php" class="btn-link w3-display-center" style="font-size:20px;color:black;background-color:white;margin-left:220px;">Back Homepage</button>
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item" style="padding-right:200px;">
 					<button type="submit" class="btn btn-gray w3-display-right" style="font-size:14px;width:70px;">Join</button>
