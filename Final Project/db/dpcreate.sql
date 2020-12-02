@@ -1,4 +1,4 @@
--- This is database code for final project with dump data
+-- This is database code for final project at first time
 
 create database if not exists `Classroom`;
 use `Classroom`;
