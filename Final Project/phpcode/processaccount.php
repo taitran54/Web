@@ -12,7 +12,7 @@
         $file = "accountlist.php";
     }
     else {
-        $file = "registor.php";
+        $file = "register.php";
     }
     $target_dir = "uploads/avatar/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -100,7 +100,7 @@
             $_SESSION["username"] = $username;
             $stm ->close();
             $conn ->close();
-            if ($file=="registor.php"){
+            if ($file=="register.php"){
                 header("Location: Homepage.php");
             }else {
                 header("Location: $file");
@@ -158,9 +158,9 @@
             $stm-> bind_param("ssssssi", $name, $email, $address, $phone, $birth, $target_file, $id_profile);
             $stm-> execute();
 
-            $sql = "UPDATE Account SET username = ?, role = ? WHERE id = ?";
+            $sql = "UPDATE Account SET username = ?, password = ?, role = ? WHERE id = ?";
             $stm = $conn -> prepare ($sql);
-            $stm-> bind_param("ssi", $username, $role, $id);
+            $stm-> bind_param("sssi", $username, $password , $role, $id);
             $stm-> execute();
             header("Location: $file");
             exit;

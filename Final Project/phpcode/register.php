@@ -68,6 +68,7 @@
     }
     ?>
 	<?php
+        require 'function.php';
 		include 'sidebar.php';
 	?>
             <form name="myRegisterForm" action = "processaccount.php" method="post" enctype="multipart/form-data" onsubmit="return validateRegisterForm()">
@@ -86,11 +87,11 @@
                     </div>
 
                     <div class="input-box">    
-                        Password: <input type="<?php echo isset($_GET['edit'])? 'hidden': 'password';?>" name="password" placeholder="Enter Password" value = "<?php echo ($password)?>" required><br> 
+                        Password: <input type="password" name="password" placeholder="Enter Password" value = "<?php echo ($password)?>" required <?php echo isset($_GET['edit'])? 'disabled': '';?> ><br> 
                     </div>
 
                     <div class="input-box">
-                        Re-type Password: <input type="<?php echo isset($_GET['edit'])? 'hidden': 'password';?>" name="password2"  placeholder="Re-type Password" value = "" required>
+                        Re-type Password: <input type="password" name="password2"  placeholder="Re-type Password" value = "<?php echo isset($_GET['edit'])? $password: '';?>" required <?php echo isset($_GET['edit'])? 'disabled': '';?>>
                     </div>
 
                     <div class="input-box">

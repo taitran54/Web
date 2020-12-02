@@ -16,6 +16,10 @@
 </style>
 </head>
 <body>
+<?php 
+session_start();
+require 'function.php';
+?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	<span class="navbar-toggler-icon"></span>
@@ -30,9 +34,10 @@
       <!--<li class="nav-item">
         <a class="nav-link" href="#"><i class="fa fa-calendar-o"></i> Calendar</a>
       </li>-->
+	  <?php if (canTeach($_SESSION['username'])){?>
 	  <li class="nav-item">
         <a class="nav-link" href="classform.php"><i class="fa fa-plus"></i> Add Class</a>
-      </li>
+      </li><?php } ?>
 	  <li class="nav-item">
         <a class="nav-link" href="joinclass.php"><i class="fa fa-plus"></i> Join Class</a>
       </li>
@@ -41,7 +46,7 @@
 			<i class="fa fa-cog fa-fw"></i>  Setting
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="register.php?edit=yes">Edit Profile</a>
           <a class="dropdown-item" href="#">Another action</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
@@ -51,26 +56,42 @@
         <a class="nav-link" href="logout.php">Logout</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+	<br></br>
+    <form class="form-inline my-2 my-lg-0" action="#" method="get">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" name="searchkey" aria-label="Search" value="<?php echo isset($_GET['searchkey'])? $_GET['searchkey'] : '' ?>">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
 </nav>
 <ol class="r">
 	<?php 
-	session_start();
+	
 	require "connection.php";
 	$username = $_SESSION["username"];
-	$sql="	SELECT C.id, C.name, P.name AS teachername, C.date, C.image
+	if (isset($_GET['searchkey'])){
+		$key=$_GET['searchkey'];
+		$sql="	SELECT DISTINCT C.id, C.name, P.name AS teachername, C.date, C.image
 			FROM Joining J, Class C, Account A1, Profile P
 			WHERE A1.id_profile = P.id
+				AND C.name LIKE '%$key%'
 				AND C.id_teacher = A1.id
 				AND J.id_class = C.id
     			AND J.approval = 1
     			AND J.id_account =
     				(SELECT A2.id FROM Account A2
 					WHERE A2.username = '$username');";
+	}
+	else {
+		$sql="SELECT  DISTINCT C.id, C.name, P.name AS teachername, C.date, C.image
+				FROM Joining J, Class C, Account A1, Profile P
+				WHERE A1.id_profile = P.id
+					AND C.id_teacher = A1.id
+					AND J.id_class = C.id
+					AND J.approval = 1
+					AND J.id_account =
+						(SELECT A2.id FROM Account A2
+						WHERE A2.username = '$username');";
+	}
 	$result = $conn -> query($sql);
 	while ($row = $result ->fetch_assoc()){
 	?>
