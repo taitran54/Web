@@ -136,7 +136,8 @@
 		</div>
 	<?php
 	$sql ="SELECT P.name, A.id FROM profile P, Account A
-			WHERE A.id in (SELECT id_account FROM joining WHERE id_class = '$idclass')
+			WHERE A.id in (SELECT id_account FROM joining WHERE id_class = '$idclass'
+															AND approval = 1)
 			AND A.id in (SELECT id FROM account WHERE role = 'student')
 			AND A.id_profile = P.id";
 	$result = $conn -> query($sql);
@@ -159,9 +160,12 @@
 		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
 			<h3> <?php echo ($row["name"]);?> </h3>
 		</div>
-	
 		<div class="card" style="border-bottom:1px solid black;border-top:0px;border-right:0px">
-			<a  href="deletejoining.php?idaccount=<?php echo ($row["id"]) ?>&id=<?php echo($_GET['id'])?>" class="btn bg-black w3-display-right" style="border:0px solid white;"><i class='far fa-times-circle' style="font-size:30px;"></i></a>
+		<?php if (canTeach($_SESSION['username'])){?>
+			
+				<a  href="deletejoining.php?idaccount=<?php echo ($row["id"]) ?>&id=<?php echo($_GET['id'])?>" class="btn bg-black w3-display-right" style="border:0px solid white;"><i class='far fa-times-circle' style="font-size:30px;"></i></a>
+			
+		<?php } ?>
 		</div>
 		<div class="card border-0">
 		</div>

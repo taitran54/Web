@@ -56,6 +56,14 @@
 		$buttonTitle = "Update";
 	}
 	require 'function.php';
+	session_start();
+	if (takeRole($_SESSION['username'])=='teacher'){
+		$bTeacher = true;
+		$creatorusername = $_SESSION['username'];
+	}
+	else {
+		$bTeacher = false;
+	}
 ?>
 
     <div class="container">
@@ -74,7 +82,7 @@
 				<div class="mb-3" style="visibility:<?php echo checkAdmin($_SESSION["username"])? "":"hidden"?>">
 					<label for="name">Lecture username</label>
 					<div class="input-group">
-						<input type="text" class="form-control" id="teacherusername" name="teacherusername" value="<?php echo $creatorusername ?>" required>
+						<input type="text" class="form-control" id="teacherusername" name="teacherusername" value="<?php echo $creatorusername ?>" required >
 					</div>
 				</div>
 			

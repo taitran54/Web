@@ -3,6 +3,9 @@
 
 require("function.php");
 $creatorid = getId($_POST["teacherusername"]);
+// $temp = $_POST['teacherusername'];
+// header("Location: test.php?id=$temp");
+// exit;
 $name = $_POST["classname"];
 $code = $_POST["code"];
 $date = getCurrentDateTime();
@@ -66,9 +69,11 @@ $conn->close();
 session_start();
 if (checkAdmin($_SESSION["username"])){
 	header("Location: classadmin.php");
+	exit;
 }
 else {
 	header("Location: Homepage.php ");
+	exit;
 }
 
 ?>

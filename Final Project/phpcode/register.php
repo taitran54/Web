@@ -86,12 +86,12 @@
                         Username: <input type="text" name="username" placeholder="Enter UserName" value ="<?php echo ($username)?>" required><br>
                     </div>
 
-                    <div class="input-box">    
-                        Password: <input type="password" name="password" placeholder="Enter Password" value = "<?php echo ($password)?>" required <?php echo isset($_GET['edit'])? 'disabled': '';?> ><br> 
+                    <div class="input-box" style="visibility: <?php echo isset($_GET['edit'])? 'hidden': '';?>">    
+                        Password: <input type="password" name="password" placeholder="Enter Password" value = "<?php echo ($password)?>" required ><br> 
                     </div>
 
-                    <div class="input-box">
-                        Re-type Password: <input type="password" name="password2"  placeholder="Re-type Password" value = "<?php echo isset($_GET['edit'])? $password: '';?>" required <?php echo isset($_GET['edit'])? 'disabled': '';?>>
+                    <div class="input-box" style="visibility: <?php echo isset($_GET['edit'])? 'hidden': '';?>">
+                        Re-type Password: <input type="password" name="password2"  placeholder="Re-type Password" value = "<?php echo isset($_GET['edit'])? $password: '';?>" required >
                     </div>
 
                     <div class="input-box">
