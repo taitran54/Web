@@ -10,23 +10,9 @@
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-		<style type="text/css">
-			.formjoinclass {
-            position: absolute;  
-			width:100%;
-			}       
-		</style>
+		<script type="text/javascript" src="main.js"></script>
+		<link rel="stylesheet" href="style.css">
 		
-		<script type="text/javascript">
-		function validationJoinClassName(){
-			var checkclassname = document.formjoinclass.classname.value;
-			if ( checkclassname == "" ) {
-				alert("Please Enter Class Name");
-            return false;
-			}
-        }
-		</script>
 	</head>
    
 	<body>

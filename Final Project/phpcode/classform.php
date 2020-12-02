@@ -105,27 +105,7 @@
 						echo $buttonTitle;
 					?>
 				</button>				
-				<script>
-					function createcode(length){
-						var result           = '';
-						var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-						var charactersLength = characters.length;
-						for ( var i = 0; i < length; i++ ) {
-							result += characters.charAt(Math.floor(Math.random() * charactersLength));
-						}
-						document.getElementById("code").value = result;
-					}
-					function callDate(){
-						n =  new Date();
-						y = n.getFullYear();
-						m = n.getMonth() + 1;
-						d = n.getDate();
-						h = n.getHours();
-						mi = n.getMinutes();
-						s = n.getSeconds();
-						document.getElementById("date").value = d + "/" + m + "/" + y +" "+ h + ":" + mi + ":" + s;
-					}
-				</script>
+				
 			</form>
 			</div>
 		</div>
