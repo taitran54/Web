@@ -1,3 +1,4 @@
 # Web
 
-This using to store project for web
+Source code in: ./Final Project/php code folder
+SQL for MySQL database in: ./Final Project/db folder
